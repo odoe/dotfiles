@@ -1,0 +1,22 @@
+# tmux display things in 256 colors
+# set-option -g default-shell /bin/zsh
+set -g default-terminal "tmux-256color-italic"
+
+set -g history-limit 20000
+
+# automatically renumber tmux windows
+set -g renumber-windows on
+
+# Smart pane switching with awareness of Vim splits.
+# See: https://github.com/christoomey/vim-tmux-navigator
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|\.?n?vim?x?(-wrapped)?)(diff)?$'"
+
+######################
+#### Key Bindings ####
+######################
+
+# sane window split defaults
+bind | split-window -h
+bind - split-window -v
+
