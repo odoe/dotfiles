@@ -198,11 +198,11 @@ nnoremap <Leader>G :Grepper -tool rg<CR>
 
 " Colorscheme
 set termguicolors
-set background=light
+set background=dark
 let g:airline_theme='one'
 let g:one_allow_italics=1
 let g:gruvbox_italics=1
-silent! colorscheme solarized8
+silent! colorscheme one
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
