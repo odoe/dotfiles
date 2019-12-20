@@ -1,4 +1,4 @@
-" minpac package manager 
+" minpac package manager
 " Try to load minpac.
 set packpath^=~/.vim
 packadd minpac
@@ -20,12 +20,13 @@ else
 	" call minpac#add('tpope/vim-projectionist')
 	call minpac#add('tpope/vim-vinegar')
 	call minpac#add('tpope/vim-dispatch')
-	call minpac#add('w0rp/ale')																" linting
+" 	call minpac#add('w0rp/ale')																" linting
 	call minpac#add('mhinz/vim-grepper')											" search with grep
 	call minpac#add('janko-m/vim-test')												" Run tests
 	call minpac#add('christoomey/vim-tmux-navigator')					" tmux navigation
 	call minpac#add('tpope/vim-obsession')										" Manage sessions
 	call minpac#add('jiangmiao/auto-pairs')										" Manage sessions
+	call minpac#add('scrooloose/nerdcommenter')								" Comment code
 
 	" JavaScript
 	call minpac#add('pangloss/vim-javascript')
@@ -162,15 +163,24 @@ nmap <C-l> <C-w>l
 nnoremap <C-p> :<C-u>FZF<CR>
 
 " For JavaScript files, use `eslint` (and only eslint)
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\ }
+" ===============================================================
+" " Ale Config
+" " ===============================================================
+" let g:ale_linters = {}
+" let g:ale_fixers = {}
+" let g:ale_fix_on_save = 1
+" let g:ale_set_baloons = 1
+"
+" :call extend(g:ale_fixers, {'*': ['remove_trailing_lines', 'trim_whitespace']})
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \ }
 " let ale lint
-let g:ale_lint_on_text_changed = 'always'	" default
-let g:ale_lint_on_save = 1								" default
-let g:ale_lint_on_enter = 1								" default
-let g:ale_lint_on_filetype_changed = 1		" default
-let g:ale_sign_column_always = 1					" default
+" let g:ale_lint_on_text_changed = 'always'	" default
+" let g:ale_lint_on_save = 1								" default
+" let g:ale_lint_on_enter = 1								" default
+" let g:ale_lint_on_filetype_changed = 1		" default
+" let g:ale_sign_column_always = 1					" default
 
 " grepper plugin
 let g:grepper		= {}
