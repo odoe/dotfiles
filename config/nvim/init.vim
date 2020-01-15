@@ -14,20 +14,24 @@ else
 	" let minpac manage itself
 	call minpac#add('k-takata/minpac', {'type': 'opt'})
 	" utils
+	call minpac#add('Shougo/vimproc.vim', {'do': 'silent! !make'})
 	call minpac#add('tpope/vim-unimpaired')
+	call minpac#add('tpope/vim-vinegar')
 	call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
 	call minpac#add('junegunn/fzf')														" fuzzy search
+	call minpac#add('neoclide/coc.nvim', { 'branch': 'release' })	" completion
 	" call minpac#add('tpope/vim-projectionist')
-	call minpac#add('tpope/vim-vinegar')
 	call minpac#add('tpope/vim-dispatch')
-" 	call minpac#add('w0rp/ale')																" linting
+	call minpac#add('jiangmiao/auto-pairs')
+	call minpac#add('w0rp/ale')																" linting
 	call minpac#add('mhinz/vim-grepper')											" search with grep
 	call minpac#add('janko-m/vim-test')												" Run tests
 	call minpac#add('christoomey/vim-tmux-navigator')					" tmux navigation
 	call minpac#add('tpope/vim-obsession')										" Manage sessions
-	call minpac#add('jiangmiao/auto-pairs')										" Manage sessions
-	call minpac#add('scrooloose/nerdcommenter')								" Comment code
 
+	" snippets
+	call minpac#add('SirVer/ultisnips')												" snippets
+	call minpac#add('honza/vim-snippets')	
 	" JavaScript
 	call minpac#add('pangloss/vim-javascript')
 	call minpac#add('maxmellon/vim-jsx-pretty')
