@@ -51,7 +51,7 @@ else
 
 	" Colorschemes
 	call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
-	call minpac#add('morhetz/gruvbox', {'type': 'opt'})
+	call minpac#add('gruvbox-community/gruvbox')
 	call minpac#add('rakr/vim-one', {'type': 'opt'})
 	call minpac#add('NLKNguyen/papercolor-theme', {'type': 'opt'})
 	call minpac#add('reedes/vim-colors-pencil', {'type': 'opt'})
