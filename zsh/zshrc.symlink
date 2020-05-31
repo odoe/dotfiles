@@ -108,6 +108,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/install/bin
 export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
 export PATH=$PATH:'/home/odoe/.local/bin':$PATH
+export PATH=$PATH:'/usr/local/go/bin':$PATH
 
 export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

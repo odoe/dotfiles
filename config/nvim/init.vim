@@ -213,10 +213,10 @@ nnoremap <Leader>G :Grepper -tool rg<CR>
 " Colorscheme
 set termguicolors
 set background=dark
-let g:airline_theme='one'
+let g:airline_theme='gruvbox'
 let g:one_allow_italics=1
 let g:gruvbox_italics=1
-silent! colorscheme one
+silent! colorscheme gruvbox
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
@@ -275,7 +275,7 @@ set visualbell
 set t_vb=
 set tm=500
 " undo
-set undodir=$VIMDATA/undo
+set undodir=$HOME/.vim/undo
 set undofile
 
 augroup vimrc
