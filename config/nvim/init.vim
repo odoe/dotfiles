@@ -1,71 +1,62 @@
-" minpac package manager
-" Try to load minpac.
-set packpath^=~/.vim
-packadd minpac
+call plug#begin()
 
-if !exists('*minpac#init')
-  " minpac is not available.
 
-  " Settings for plugin-less environment.
-  " ...
-else
-	" init with verbosity 3 to see minpac work
-	call minpac#init({'verbose': 3})
-	" let minpac manage itself
-	call minpac#add('k-takata/minpac', {'type': 'opt'})
-	" utils
-	call minpac#add('Shougo/vimproc.vim', {'do': 'silent! !make'})
-	call minpac#add('tpope/vim-unimpaired')
-	call minpac#add('tpope/vim-vinegar')
-	call minpac#add('tpope/vim-scriptease', {'type': 'opt'})
-	call minpac#add('junegunn/fzf')														" fuzzy search
-	call minpac#add('neoclide/coc.nvim', { 'branch': 'release' })	" completion
-	" call minpac#add('tpope/vim-projectionist')
-	call minpac#add('tpope/vim-dispatch')
-	call minpac#add('jiangmiao/auto-pairs')
-	call minpac#add('w0rp/ale')																" linting
-	call minpac#add('mhinz/vim-grepper')											" search with grep
-	call minpac#add('janko-m/vim-test')												" Run tests
-	call minpac#add('christoomey/vim-tmux-navigator')					" tmux navigation
-	call minpac#add('tpope/vim-obsession')										" Manage sessions
+Plug 'k-takata/minpac', {'type': 'opt'}
+" utils
+Plug 'Shougo/vimproc.vim', {'do': 'silent! !make'}
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-scriptease', {'type': 'opt'}
+Plug 'junegunn/fzf'														" fuzzy search
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }	" completion
+" Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-dispatch'
+Plug 'jiangmiao/auto-pairs'
+Plug 'w0rp/ale'																" linting
+Plug 'mhinz/vim-grepper'											" search with grep
+Plug 'janko-m/vim-test'												" Run tests
+Plug 'christoomey/vim-tmux-navigator'					" tmux navigation
+Plug 'tpope/vim-obsession'										" Manage sessions
 
-	" snippets
-	call minpac#add('SirVer/ultisnips')												" snippets
-	call minpac#add('honza/vim-snippets')	
-	" JavaScript
-	call minpac#add('pangloss/vim-javascript')
-	call minpac#add('maxmellon/vim-jsx-pretty')
+" snippets
+Plug 'SirVer/ultisnips'												" snippets
+Plug 'honza/vim-snippets'
 
-	" typescript
-	call minpac#add('leafgarland/typescript-vim')
-	call minpac#add('peitalin/vim-jsx-typescript')
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 
-	" ReasonML
-	call minpac#add('reasonml-editor/vim-reason-plus')
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" ReasonML
+Plug 'reasonml-editor/vim-reason-plus'
 
 " Elm
-	call minpac#add('elmcast/elm-vim')
+Plug 'elmcast/elm-vim'
 
 " Haskell
-	call minpac#add('neovimhaskell/haskell-vim')
+Plug 'neovimhaskell/haskell-vim'
 
-	" Colorschemes
-	call minpac#add('lifepillar/vim-solarized8', {'type': 'opt'})
-	call minpac#add('gruvbox-community/gruvbox')
-	call minpac#add('rakr/vim-one', {'type': 'opt'})
-	call minpac#add('NLKNguyen/papercolor-theme', {'type': 'opt'})
-	call minpac#add('reedes/vim-colors-pencil', {'type': 'opt'})
+" Colorschemes
+Plug 'lifepillar/vim-solarized8', {'type': 'opt'}
+Plug 'gruvbox-community/gruvbox'
+Plug 'rakr/vim-one', {'type': 'opt'}
+Plug 'NLKNguyen/papercolor-theme', {'type': 'opt'}
+Plug 'reedes/vim-colors-pencil', {'type': 'opt'}
 
-	" Themes
-	call minpac#add('vim-airline/vim-airline', {'type': 'opt'})
-	call minpac#add('vim-airline/vim-airline-themes', {'type': 'opt'})
+" Themes
+Plug 'vim-airline/vim-airline', {'type': 'opt'}
+Plug 'vim-airline/vim-airline-themes', {'type': 'opt'}
 
-	" Nerdtree
-	call minpac#add('scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] })
-	call minpac#add('Xuyuanp/nerdtree-git-plugin')						" Nerdtree git
-	call minpac#add('ryanoasis/vim-devicons')									" File type glyphs
-	call minpac#add('tiagofumo/vim-nerdtree-syntax-highlight') " Syntax highlighting in nerdtree
-endif
+" Nerdtree
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin'						" Nerdtree git
+Plug 'ryanoasis/vim-devicons'									" File type glyphs
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Syntax highlighting in nerdtree
+
+call plug#end()
 
 " encoding
 set encoding=UTF-8
@@ -80,6 +71,9 @@ let g:DevIconsEnableFolderExtensionPatternMatching = 1
 let NERDTreeDirArrowExpandable = "\u00a0" " make arrows invisible
 let NERDTreeDirArrowCollapsible = "\u00a0" " make arrows invisible
 let NERDTreeNodeDelimiter = "\u263a" " smiley face
+
+let g:netrw_browser_split=2
+let g:netrw_banner=0
 
 augroup nerdtree
 		autocmd!
@@ -117,9 +111,9 @@ let g:NERDTreeIndicatorMapCustom = {
 \ }
 
 " startify
-call minpac#add('mhinz/vim-startify')
+Plug 'mhinz/vim-startify'
 " Don't change to directory when selecting a file
-call minpac#add('ryanoasis/vim-devicons')									" File type glyphs
+Plug 'ryanoasis/vim-devicons'									" File type glyphs
 let g:startify_files_number = 5
 let g:startify_change_to_dir = 0
 let g:startify_custom_header = [ ]
@@ -143,7 +137,7 @@ let g:startify_lists = [
 \ ]
 
 let g:startify_commands = [
-\   { 'up': [ 'Update Plugins', ':PackUpdate' ] }
+\   { 'up': [ 'Update Plugins', ':PlugUpdate' ] }
 \ ]
 
 let g:startify_bookmarks = [
@@ -153,11 +147,11 @@ let g:startify_bookmarks = [
 
 
 " Commands
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+" command! PackUpdate call minpac#update()
+" command! PackClean call minpac#clean()
 
 " remappings
-let mapleader = ','
+let mapleader = ","
 " split window remapping
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -189,6 +183,10 @@ nnoremap <C-p> :<C-u>FZF<CR>
 " grepper plugin
 let g:grepper		= {}
 let g:grepper.tools	= ['grep', 'git', 'rg']
+
+if executable('rg')
+	let g:rg_derive_root='true'
+endif
 
 " Haskell setup
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
@@ -239,10 +237,14 @@ syntax enable
 " Tab control
 set noexpandtab " insert tabs rather than spaces for <Tab>
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-set tabstop=2 " the visible width of tabs
-set softtabstop=2 " edit as if the tabs are 4 characters wide
-set shiftwidth=2 " number of spaces to use for indent and unindent
+set tabstop=4 " the visible width of tabs
+set softtabstop=4 " edit as if the tabs are 4 characters wide
+set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
+set incsearch
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 set autoread " detect when a file is changed
 
