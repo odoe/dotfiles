@@ -6,6 +6,7 @@ Plug 'k-takata/minpac', {'type': 'opt'}
 Plug 'Shougo/vimproc.vim', {'do': 'silent! !make'}
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-scriptease', {'type': 'opt'}
 Plug 'junegunn/fzf'														" fuzzy search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }	" completion
@@ -25,6 +26,7 @@ Plug 'honza/vim-snippets'
 " JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'elzr/vim-json'
 
 " typescript
 Plug 'leafgarland/typescript-vim'
@@ -32,6 +34,9 @@ Plug 'peitalin/vim-jsx-typescript'
 
 " ReasonML
 Plug 'reasonml-editor/vim-reason-plus'
+
+" Solidity
+Plug 'tomlion/vim-solidity'
 
 " Elm
 Plug 'elmcast/elm-vim'
@@ -42,6 +47,10 @@ Plug 'neovimhaskell/haskell-vim'
 " Colorschemes
 Plug 'lifepillar/vim-solarized8', {'type': 'opt'}
 Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'vim-airline/vim-airline'
+Plug 'flazz/vim-colorschemes'
 Plug 'rakr/vim-one', {'type': 'opt'}
 Plug 'NLKNguyen/papercolor-theme', {'type': 'opt'}
 Plug 'reedes/vim-colors-pencil', {'type': 'opt'}
@@ -166,13 +175,17 @@ nnoremap <C-p> :<C-u>FZF<CR>
 " " ===============================================================
 " let g:ale_linters = {}
 " let g:ale_fixers = {}
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 " let g:ale_set_baloons = 1
 "
 " :call extend(g:ale_fixers, {'*': ['remove_trailing_lines', 'trim_whitespace']})
-" let g:ale_linters = {
-" \   'javascript': ['eslint'],
-" \ }
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\ }
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+
 " let ale lint
 " let g:ale_lint_on_text_changed = 'always'	" default
 " let g:ale_lint_on_save = 1								" default
@@ -214,7 +227,11 @@ set background=dark
 let g:airline_theme='gruvbox'
 let g:one_allow_italics=1
 let g:gruvbox_italics=1
-silent! colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+silent! colorscheme gruvbox-material
+
+set guifont=FiraCode\ Nerd\ Font:h12
+let g:airline_powerline_fonts = 1
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes

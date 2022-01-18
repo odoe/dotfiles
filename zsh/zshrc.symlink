@@ -70,6 +70,7 @@ plugins+=(
   zsh-nvm
   zsh-autosuggestions
   tmux
+  shrink-path
 )
 
 ZSH_TMUX_AUTOSTART=true
@@ -110,6 +111,13 @@ export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
 export PATH=$PATH:'/home/odoe/.local/bin':$PATH
 export PATH=$PATH:'/usr/local/go/bin':$PATH
 
+# diff-so-fancy
+export PATH=$PATH:'~/.config/diff-so-fancy/lib':$PATH
+
+# dumb oracle shit
+export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
+export OCI_LIB_DIR=/opt/oracle/instantclient/sdk/include:$OCI_LIB_DIR
+
 export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -131,6 +139,7 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
+load-nvmrc
                                                                                                         
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -163,6 +172,16 @@ alias la='ls -A'
 alias l='ls -CF'
 alias vim=nvim
 
+# setopt prompt_subst
+# PS1='%n@%m $(shrink_path -f)>'
+local ret_status="%(?:%{$fg_bold[green]%}λ :%{$fg_bold[red]%}λ )"
+PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
 # Powerline config
 # POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
@@ -175,3 +194,7 @@ alias vim=nvim
 # case $- in *i*)
 #   if [ -z "$TMUX" ]; then exec tmux; fi;;
 # esac
+[ -f "/home/odoe/.ghcup/env" ] && source "/home/odoe/.ghcup/env" # ghcup-env
+
+# rbenv
+eval "$(rbenv init -)"

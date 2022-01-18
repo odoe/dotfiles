@@ -1,7 +1,7 @@
 # gitconfig
 [user]
-	name = Rene Rubalcava
-	email = rrubalcava@odoe.net
+	name = odoe
+	email = odoe@odoe.net
 [github]
 	user = odoe
 [alias]
@@ -144,7 +144,7 @@
     whitespace = nowarn
 [core]
     excludesfile = ~/.gitignore_global
-    pager = less -FXRS -x2
+	pager = diff-so-fancy | less --tabs=4 -RFX
     editor = vim
     whitespace = cr-at-eol
 [rerere]
@@ -153,7 +153,7 @@
     extendRegexp = true
     lineNumber = true
 [credential]
-	helper = store
+	helper = cache --timeout 3600
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
@@ -165,3 +165,7 @@
 [pager]
     diff = "diff-so-fancy | less --tabs=4 -RFX"
     show = "diff-so-fancy | less --tabs=4 -RFX"
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = diff-so-fancy --patch
