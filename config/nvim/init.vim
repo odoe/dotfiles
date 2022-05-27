@@ -7,10 +7,12 @@ Plug 'Shougo/vimproc.vim', {'do': 'silent! !make'}
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-scriptease', {'type': 'opt'}
 Plug 'junegunn/fzf'														" fuzzy search
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }	" completion
-" Plug 'tpope/vim-projectionist'
+Plug 'editorconfig/editorconfig-vim' " Editor config
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'																" linting
@@ -31,6 +33,9 @@ Plug 'elzr/vim-json'
 " typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+
+" vue
+Plug 'leafOfTree/vim-vue-plugin'
 
 " ReasonML
 Plug 'reasonml-editor/vim-reason-plus'

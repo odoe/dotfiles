@@ -105,6 +105,20 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# DOTNET
+# for ZSH
+case "$OSTYPE" in
+  darwin*)
+    # ...
+  ;;
+  linux*)
+    export DOTNET_ROOT=/snap/dotnet-sdk/current
+  ;;
+  dragonfly*|freebsd*|netbsd*|openbsd*)
+    # ...
+  ;;
+esac
+
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/install/bin
 export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
