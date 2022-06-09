@@ -122,6 +122,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/install/bin
 # export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
 export PATH=$PATH:'/home/odoe/.local/bin':$PATH
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 export PATH=$PATH:'/usr/local/go/bin':$PATH
 
 # diff-so-fancy
