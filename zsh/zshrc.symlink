@@ -67,7 +67,6 @@ export TERM="xterm-256color"
 # Add wisely, as too many plugins slow down shell startup.
 plugins+=(
   git
-  zsh-nvm
   zsh-autosuggestions
   tmux
   shrink-path
@@ -120,8 +119,8 @@ case "$OSTYPE" in
 esac
 
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/install/bin
-export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
+# export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/install/bin
+# export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
 export PATH=$PATH:'/home/odoe/.local/bin':$PATH
 export PATH=$PATH:'/usr/local/go/bin':$PATH
 
@@ -153,7 +152,7 @@ load-nvmrc() {
   fi
 }
 add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# load-nvmrc
                                                                                                         
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -210,5 +209,13 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 # esac
 [ -f "/home/odoe/.ghcup/env" ] && source "/home/odoe/.ghcup/env" # ghcup-env
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 # rbenv
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
+
+# pnpm
+export PNPM_HOME="/home/odoe/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

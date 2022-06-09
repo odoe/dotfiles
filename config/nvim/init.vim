@@ -9,7 +9,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-scriptease', {'type': 'opt'}
-Plug 'junegunn/fzf'														" fuzzy search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fuzzysearch
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }	" completion
 Plug 'editorconfig/editorconfig-vim' " Editor config
 Plug 'tpope/vim-projectionist'
@@ -29,6 +30,7 @@ Plug 'honza/vim-snippets'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'elzr/vim-json'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " typescript
 Plug 'leafgarland/typescript-vim'
@@ -48,6 +50,13 @@ Plug 'elmcast/elm-vim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Go
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Colorschemes
 Plug 'lifepillar/vim-solarized8', {'type': 'opt'}
@@ -90,18 +99,18 @@ let g:netrw_browser_split=2
 let g:netrw_banner=0
 
 augroup nerdtree
-		autocmd!
-		autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
-		autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
+	autocmd!
+	autocmd FileType nerdtree setlocal nolist " turn off whitespace characters
+	autocmd FileType nerdtree setlocal nocursorline " turn off line highlighting for performance
 augroup END
 
 " Toggle NERDTree
 function! ToggleNerdTree()
-		if @% != "" && @% !~ "Startify" && (!exists("g:NERDTree") || (g:NERDTree.ExistsForTab() && !g:NERDTree.IsOpen()))
-				:NERDTreeFind
-		else
-				:NERDTreeToggle
-		endif
+	if @% != "" && @% !~ "Startify" && (!exists("g:NERDTree") || (g:NERDTree.ExistsForTab() && !g:NERDTree.IsOpen()))
+		:NERDTreeFind
+	else
+		:NERDTreeToggle
+	endif
 endfunction
 " toggle nerd tree
 nmap <silent> <leader>k :call ToggleNerdTree()<cr>
@@ -112,17 +121,17 @@ let NERDTreeShowHidden=1
 let NERDTreeDirArrowExpandable = '▷'
 let NERDTreeDirArrowCollapsible = '▼'
 let g:NERDTreeIndicatorMapCustom = {
-\ "Modified"  : "✹",
-\ "Staged"    : "✚",
-\ "Untracked" : "✭",
-\ "Renamed"   : "➜",
-\ "Unmerged"  : "═",
-\ "Deleted"   : "✖",
-\ "Dirty"     : "✗",
-\ "Clean"     : "✔︎",
-\ 'Ignored'   : '☒',
-\ "Unknown"   : "?"
-\ }
+			\ "Modified"  : "✹",
+			\ "Staged"    : "✚",
+			\ "Untracked" : "✭",
+			\ "Renamed"   : "➜",
+			\ "Unmerged"  : "═",
+			\ "Deleted"   : "✖",
+			\ "Dirty"     : "✗",
+			\ "Clean"     : "✔︎",
+			\ 'Ignored'   : '☒',
+			\ "Unknown"   : "?"
+			\ }
 
 " startify
 Plug 'mhinz/vim-startify'
@@ -135,29 +144,29 @@ let g:startify_relative_path = 1
 let g:startify_use_env = 1
 
 function! s:list_commits()
-		let git = 'git -C ' . getcwd()
-		let commits = systemlist(git . ' log --oneline | head -n5')
-		let git = 'G' . git[1:]
-		return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+	let git = 'git -C ' . getcwd()
+	let commits = systemlist(git . ' log --oneline | head -n5')
+	let git = 'G' . git[1:]
+	return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
 endfunction
 
 " Custom startup list, only show MRU from current directory/project
 let g:startify_lists = [
-\  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
-\  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
-\  { 'type': 'sessions',  'header': [ 'Sessions' ]       },
-\  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ]      },
-\  { 'type': 'commands',  'header': [ 'Commands' ]       },
-\ ]
+			\  { 'type': 'dir',       'header': [ 'Files '. getcwd() ] },
+			\  { 'type': function('s:list_commits'), 'header': [ 'Recent Commits' ] },
+			\  { 'type': 'sessions',  'header': [ 'Sessions' ]       },
+			\  { 'type': 'bookmarks', 'header': [ 'Bookmarks' ]      },
+			\  { 'type': 'commands',  'header': [ 'Commands' ]       },
+			\ ]
 
 let g:startify_commands = [
-\   { 'up': [ 'Update Plugins', ':PlugUpdate' ] }
-\ ]
+			\   { 'up': [ 'Update Plugins', ':PlugUpdate' ] }
+			\ ]
 
 let g:startify_bookmarks = [
-		\ { 'c': '~/.dotfiles/config/nvim/init.vim' },
-		\ { 'z': '~/.dotfiles/zsh/zshrc.symlink' }
-\ ]
+			\ { 'c': '~/.dotfiles/config/nvim/init.vim' },
+			\ { 'z': '~/.dotfiles/zsh/zshrc.symlink' }
+			\ ]
 
 
 " Commands
@@ -172,7 +181,10 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 " fzf
-nnoremap <C-p> :<C-u>FZF<CR>
+" nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-g> :Ag<Cr>
+nnoremap <silent><leader>l :Buffers<CR>
 
 " For JavaScript files, use `eslint` (and only eslint)
 " ===============================================================
@@ -185,9 +197,9 @@ let g:ale_fix_on_save = 1
 "
 " :call extend(g:ale_fixers, {'*': ['remove_trailing_lines', 'trim_whitespace']})
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\ }
+			\   'javascript': ['eslint'],
+			\   'typescript': ['eslint'],
+			\ }
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 
@@ -235,14 +247,14 @@ let g:gruvbox_italics=1
 let g:gruvbox_contrast_dark = 'hard'
 silent! colorscheme gruvbox-material
 
-set guifont=FiraCode\ Nerd\ Font:h12
+set guifont=FiraMono\ Nerd\ Font:h12
 let g:airline_powerline_fonts = 1
 
 if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+	set t_ut=
 endif
 
 " appearance
