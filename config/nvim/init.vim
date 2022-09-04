@@ -3,6 +3,8 @@ call plug#begin()
 
 Plug 'k-takata/minpac', {'type': 'opt'}
 " utils
+Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
+Plug 'ThePrimeagen/harpoon'
 Plug 'Shougo/vimproc.vim', {'do': 'silent! !make'}
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -31,9 +33,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'honza/vim-snippets'
 
 " JavaScript
+Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'elzr/vim-json'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " typescript
@@ -230,6 +234,12 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
+" Svelte
+let g:svelte_preprocessor_tags = [
+  \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' }
+  \ ]
+let g:svelte_preprocessors = ['ts']
+
 " search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
 
@@ -249,6 +259,9 @@ let g:one_allow_italics=1
 let g:gruvbox_italics=1
 let g:gruvbox_contrast_dark = 'hard'
 silent! colorscheme gruvbox-material
+hi! Normal guibg=NONE ctermbg=NONE
+
+
 
 set guifont=FiraMono\ Nerd\ Font:h12
 let g:airline_powerline_fonts = 1
@@ -269,6 +282,9 @@ set list
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 set number " show line numbers
+" turn relative line numbers on
+:set relativenumber
+:set rnu
 syntax enable
 " set mouse=a
 " Tab control
