@@ -40,6 +40,8 @@ Plug 'elzr/vim-json'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'wuelnerdotexe/vim-astro'
+
 " typescript
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -239,6 +241,9 @@ let g:svelte_preprocessor_tags = [
   \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' }
   \ ]
 let g:svelte_preprocessors = ['ts']
+
+" Astro
+let g:astro_typescript = 'enable'
 
 " search for the current word
 nnoremap <Leader>* :Grepper -cword -noprompt<CR>
