@@ -1,6 +1,5 @@
 call plug#begin()
 
-
 Plug 'k-takata/minpac', {'type': 'opt'}
 " utils
 Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
@@ -23,10 +22,11 @@ Plug 'mhinz/vim-grepper'											" search with grep
 Plug 'janko-m/vim-test'												" Run tests
 Plug 'christoomey/vim-tmux-navigator'					" tmux navigation
 Plug 'tpope/vim-obsession'										" Manage sessions
-" Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 " Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'	
+Plug 'ryanoasis/vim-devicons'
+Plug 'puremourning/vimspector'
 
 " snippets
 " Plug 'SirVer/ultisnips'												" snippets
@@ -227,6 +227,19 @@ if executable('rg')
 	let g:rg_derive_root='true'
 endif
 
+" vimspector
+nnoremap <Leader>dl :call vimspector#Launch()<CR>
+nnoremap <Leader>de :call vimspector#Reset()<CR>
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nmap <Leader>dk <Plug>VimspectorRestart
+nmap <Leader>dh <Plug>VimspectorStepOut
+nmap <Leader>dl <Plug>VimspectorStepInto
+nmap <Leader>dj <Plug>VimspectorStepOver
+
 " Haskell setup
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
@@ -295,9 +308,10 @@ syntax enable
 " Tab control
 set noexpandtab " insert tabs rather than spaces for <Tab>
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set smartindent
 set tabstop=4 " the visible width of tabs
 set softtabstop=4 " edit as if the tabs are 4 characters wide
-set shiftwidth=4 " number of spaces to use for indent and unindent
+" set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
 set incsearch
 
@@ -410,6 +424,13 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
+
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
