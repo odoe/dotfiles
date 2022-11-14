@@ -17,7 +17,7 @@ Plug 'editorconfig/editorconfig-vim' " Editor config
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
-Plug 'w0rp/ale'																" linting
+Plug 'dense-analysis/ale'											" linting
 Plug 'mhinz/vim-grepper'											" search with grep
 Plug 'janko-m/vim-test'												" Run tests
 Plug 'christoomey/vim-tmux-navigator'					" tmux navigation
