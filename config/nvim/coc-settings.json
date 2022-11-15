@@ -1,4 +1,14 @@
 {
-    // make vim select first item on completion
-    "suggest.noselect": false
+    "suggest.noselect": false,
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "prettier.disableSuccessMessage": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+      ],
+      "tsserver.formatOnType": true,
+      "coc.preferences.formatOnType": true
 }

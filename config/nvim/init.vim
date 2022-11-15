@@ -17,7 +17,7 @@ Plug 'editorconfig/editorconfig-vim' " Editor config
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
 Plug 'jiangmiao/auto-pairs'
-Plug 'dense-analysis/ale'											" linting
+" Plug 'dense-analysis/ale'											" linting
 Plug 'mhinz/vim-grepper'											" search with grep
 Plug 'janko-m/vim-test'												" Run tests
 Plug 'christoomey/vim-tmux-navigator'					" tmux navigation
@@ -249,6 +249,10 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
+" TyepScript and JavaScript
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
 " Svelte
 let g:svelte_preprocessor_tags = [
   \ { 'name': 'ts', 'tag': 'script', 'as': 'typescript' }
@@ -372,6 +376,16 @@ set signcolumn=yes
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
