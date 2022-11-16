@@ -377,7 +377,7 @@ set signcolumn=yes
 set nobackup
 set nowritebackup
 let g:coc_global_extensions = [
-  \ 'coc-tsserver'
+  \ 'coc-tsserver', 'coc-rls'
   \ ]
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
