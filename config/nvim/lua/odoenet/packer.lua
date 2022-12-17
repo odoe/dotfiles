@@ -54,7 +54,14 @@ return require('packer').startup(function(use)
     }
 
     use('folke/zen-mode.nvim')
-
     use('editorconfig/editorconfig-vim')
+
+    -- Rust
+    use('simrat39/rust-tools.nvim')
+
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
 end)
