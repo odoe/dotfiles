@@ -39,6 +39,10 @@ lsp.set_preferences({
 
 vim.diagnostic.config({
     virtual_text = true,
+    float = {
+        source = 'always',
+        border = 'border'
+    }
 })
 
 lsp.on_attach(function(client, bufnr)
