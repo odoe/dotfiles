@@ -54,4 +54,6 @@ return require('packer').startup(function(use)
 
     use('folke/zen-mode.nvim')
 
+    use('editorconfig/editorconfig-vim')
+
 end)

@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/odoe/.local/share/nvim/site/pack/packer/start/dracula",
     url = "https://github.com/dracula/vim"
   },
+  ["editorconfig-vim"] = {
+    loaded = true,
+    path = "/home/odoe/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
+    url = "https://github.com/editorconfig/editorconfig-vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/odoe/.local/share/nvim/site/pack/packer/start/friendly-snippets",
