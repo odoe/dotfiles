@@ -37,33 +37,33 @@ lsp.set_preferences({
     }
 })
 
--- vim.diagnostic.config({
---     virtual_text = true,
---     float = {
---         source = 'always',
---         border = 'border'
---     }
--- })
-
--- Testing diagnostic
 vim.diagnostic.config({
-    virtual_text = false,
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false,
+    virtual_text = true,
     float = {
-        border = 'rounded',
         source = 'always',
-        header = '',
-        prefix = '',
-    },
+        border = 'border'
+    }
 })
 
-vim.cmd([[
-set signcolumn=yes
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
+-- Testing diagnostic
+-- vim.diagnostic.config({
+--     virtual_text = false,
+--     signs = true,
+--     update_in_insert = true,
+--     underline = true,
+--     severity_sort = false,
+--     float = {
+--         border = 'rounded',
+--         source = 'always',
+--         header = '',
+--         prefix = '',
+--     },
+-- })
+
+-- vim.cmd([[
+-- set signcolumn=yes
+-- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+-- ]])
 -- end testing diagnostic
 
 
