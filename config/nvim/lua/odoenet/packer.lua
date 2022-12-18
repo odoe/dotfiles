@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
 
 	-- You can alias plugin names
 	use {'dracula/vim', as = 'dracula'}
-    use ('haishanh/night-owl.vim')
+    use('folke/tokyonight.nvim')
 
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
