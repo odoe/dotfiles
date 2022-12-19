@@ -17,4 +17,14 @@
 -- set signcolumn=yes
 -- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 -- ]])
-
+-- vim.opt.listchars:append({ eol = '↵', tab = '→', trail = '⋅' })
+-- vim.opt.listchars.eol = '↵'
+-- vim.opt.listchars.tab = '→'
+-- vim.opt.listchars.trail = '⋅'
+-- vim.opt.list = true
+vim.opt.listchars = {
+    eol = '↵',
+    -- extends = '→',
+    trail = '⋅'
+}
+vim.opt.list = true
