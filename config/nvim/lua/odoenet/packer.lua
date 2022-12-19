@@ -60,6 +60,14 @@ return require('packer').startup(function(use)
     -- Rust
     -- use('simrat39/rust-tools.nvim')
 
+    -- use {
+    --     "j-hui/fidget.nvim",
+    --     event = "BufReadPre",
+    --     config = function()
+    --         require("fidget").setup {}
+    --     end,
+    -- }
+
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
