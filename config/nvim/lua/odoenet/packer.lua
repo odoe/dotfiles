@@ -51,6 +51,13 @@ return require('packer').startup(function(use)
             -- Snippets
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
+            {
+                "j-hui/fidget.nvim",
+                event = "BufReadPre",
+                config = function()
+                    require("fidget").setup {}
+                end,
+            }
         }
     }
 
@@ -60,13 +67,6 @@ return require('packer').startup(function(use)
     -- Rust
     -- use('simrat39/rust-tools.nvim')
 
-    -- use {
-    --     "j-hui/fidget.nvim",
-    --     event = "BufReadPre",
-    --     config = function()
-    --         require("fidget").setup {}
-    --     end,
-    -- }
 
     use {
         "windwp/nvim-autopairs",
