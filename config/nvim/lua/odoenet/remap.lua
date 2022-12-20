@@ -1,3 +1,5 @@
+-- local opts = { noremap = true, silent = true }
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -37,4 +39,10 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Window navigation
+-- vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
+-- vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
+-- vim.keymap.set("n", "<C-l>", "<C-l>h", opts)
 
