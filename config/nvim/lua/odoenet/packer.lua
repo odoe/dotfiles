@@ -19,10 +19,10 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
-
     -- You can alias plugin names
     use {'dracula/vim', as = 'dracula'}
     use('folke/tokyonight.nvim')
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
