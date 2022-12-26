@@ -9,6 +9,16 @@ lsp.ensure_installed({
   'rust_analyzer',
 })
 
+lsp.configure('sumneko_lua', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -37,34 +47,7 @@ lsp.set_preferences({
     }
 })
 
-vim.diagnostic.config({
-    virtual_text = true,
-    float = {
-        source = 'always',
-        border = 'rounded',
-    }
-})
 
--- Testing diagnostic
--- vim.diagnostic.config({
---     virtual_text = false,
---     signs = true,
---     update_in_insert = true,
---     underline = true,
---     severity_sort = false,
---     float = {
---         border = 'rounded',
---         source = 'always',
---         header = '',
---         prefix = '',
---     },
--- })
-
--- vim.cmd([[
--- set signcolumn=yes
--- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
--- ]])
--- end testing diagnostic
 
 
 lsp.on_attach(function(client, bufnr)
@@ -89,4 +72,31 @@ end)
 
 lsp.setup()
 
+-- Testing diagnostic
+-- vim.diagnostic.config({
+    --     virtual_text = false,
+    --     signs = true,
+    --     update_in_insert = true,
+    --     underline = true,
+    --     severity_sort = false,
+    --     float = {
+        --         border = 'rounded',
+        --         source = 'always',
+        --         header = '',
+        --         prefix = '',
+        --     },
+        -- })
 
+        -- vim.cmd([[
+        -- set signcolumn=yes
+        -- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+        -- ]])
+        -- end testing diagnostic
+
+vim.diagnostic.config({
+    virtual_text = true,
+    float = {
+        source = 'always',
+        border = 'rounded',
+    }
+})
