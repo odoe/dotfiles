@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
     use {'dracula/vim', as = 'dracula'}
     use('folke/tokyonight.nvim')
     use { "catppuccin/nvim", as = "catppuccin" }
+    use('challenger-deep-theme/vim')
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
