@@ -233,7 +233,7 @@ export PATH="$PNPM_HOME:$PATH"
 
 if ! type "$neofetch" &> /dev/null; then
   if ! type "$lolcat" &> /dev/null; then
-    neofetch --ascii_distro ubuntu_small | lolcat
+    neofetch | lolcat
   fi
 fi
 
