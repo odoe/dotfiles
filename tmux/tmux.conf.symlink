@@ -7,6 +7,9 @@ set -g history-limit 20000
 # automatically renumber tmux windows
 set -g renumber-windows on
 
+# status bar
+set -g status-style fg=green,bg=black
+
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
