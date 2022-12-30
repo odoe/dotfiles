@@ -243,4 +243,4 @@ fi
 
 # Bindings
 bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^i "cht.sh\n"
+# bindkey -s ^i "cht.sh\n"
