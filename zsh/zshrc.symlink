@@ -103,9 +103,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "$HOME/.dotfiles/bin/.local/bin" ] ; then
-    PATH="$HOME/.dotfiles/bin/.local/bin:$PATH"
-fi
+# if [ -d "$HOME/.dotfiles/bin/.local/bin" ] ; then
+#     PATH="$HOME/.dotfiles/bin/.local/bin:$PATH"
+# fi
 
 # DOTNET
 # for ZSH
@@ -242,5 +242,5 @@ if ! type "$neofetch" &> /dev/null; then
 fi
 
 # Bindings
-bindkey -s ^f "tmux-sessionizer\n"
-# bindkey -s ^i "cht.sh\n"
+bindkey -s ^f "~/.dotfiles/bin/tmux-sessionizer\n"
+# bindkey -s ^i "~/.dotfiles/bin/tmux-cht\n"

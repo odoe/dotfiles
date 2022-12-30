@@ -36,4 +36,4 @@ bind -r h select-pane -L
 bind -r l select-pane -R
 
 # bind-key -r f run-shell "tmux neww ~/.dotfiles/bin/.local/bin/tmux-sessionizer"
-# bind-key -r i run-shell "tmux neww cht.sh"
+bind-key -r i run-shell "tmux neww ~/.dotfiles/bin/tmux-cht\n"
