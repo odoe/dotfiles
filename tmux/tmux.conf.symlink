@@ -10,6 +10,11 @@ set -g renumber-windows on
 # status bar
 set -g status-style fg=green,bg=black
 
+# Copy Pasta
+set-window-option -g mode-keys vi
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
@@ -22,4 +27,3 @@ is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
 # sane window split defaults
 bind | split-window -h
 bind - split-window -v
-
