@@ -1,6 +1,7 @@
 # tmux display things in 256 colors
 # set-option -g default-shell /bin/zsh
-set -g default-terminal "tmux-256color-italic"
+# set -g default-terminal "tmux-256color-italic"
+set-option -g default-terminal tmux-256color
 
 set -g history-limit 20000
 
@@ -35,5 +36,5 @@ bind -r j select-pane -D
 bind -r h select-pane -L
 bind -r l select-pane -R
 
-# bind-key -r f run-shell "tmux neww ~/.dotfiles/bin/.local/bin/tmux-sessionizer"
-bind-key -r i run-shell "tmux neww ~/.dotfiles/bin/tmux-cht\n"
+bind-key -r f run-shell "tmux neww ~/.dotfiles/bin/tmux-sessionizer"
+bind-key -r i run-shell "tmux split-window -h ~/.dotfiles/bin/tmux-cht.sh"

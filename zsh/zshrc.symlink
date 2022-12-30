@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/odoe/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,9 +103,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# if [ -d "$HOME/.dotfiles/bin/.local/bin" ] ; then
-#     PATH="$HOME/.dotfiles/bin/.local/bin:$PATH"
-# fi
+if [ -d "$HOME/.dotfiles/bin" ] ; then
+    PATH="$HOME/.dotfiles/bin:$PATH"
+fi
 
 # DOTNET
 # for ZSH
@@ -122,9 +122,7 @@ case "$OSTYPE" in
 esac
 
 export PATH="$HOME/.cargo/bin:$PATH"
-# export PATH=$PATH:$VIMCONFIG/pack/minpac/start/fzf/install/bin
-# export PATH=$PATH:'/home/linuxbrew/.linuxbrew/bin':$PATH
-export PATH=$PATH:'/home/odoe/.local/bin':$PATH
+export PATH=$PATH:'~/.local/bin':$PATH
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH=$PATH:'/usr/local/go/bin':$PATH
@@ -137,8 +135,6 @@ export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
 export OCI_LIB_DIR=/opt/oracle/instantclient/sdk/include:$OCI_LIB_DIR
 
 export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 function load-nvm () {
   if [[ $OSTYPE == "darwin"* ]]; then
     export NVM_DIR=~/.nvm
@@ -218,7 +214,7 @@ export FZF_ALT_C_COMMAND="fd --type f"
 # case $- in *i*)
 #   if [ -z "$TMUX" ]; then exec tmux; fi;;
 # esac
-[ -f "/home/odoe/.ghcup/env" ] && source "/home/odoe/.ghcup/env" # ghcup-env
+[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
@@ -231,7 +227,7 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/odoe/.local/share/pnpm"
+export PNPM_HOME="~/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
@@ -243,4 +239,4 @@ fi
 
 # Bindings
 bindkey -s ^f "~/.dotfiles/bin/tmux-sessionizer\n"
-# bindkey -s ^i "~/.dotfiles/bin/tmux-cht\n"
+# bindkey -s ^i "~/.dotfiles/bin/tmux-cht.sh"
