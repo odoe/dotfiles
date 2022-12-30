@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-languages=$(echo "golang c cpp typescript rust elixir" | tr " " "\n")
+languages=$(echo "golang c cpp javascript typescript rust elixir" | tr " " "\n")
 core_utils=$(echo "find xargs sed awk" | tr " " "\n")
 selected=$(echo -e "$languages\n$core_utils" | fzf)
 

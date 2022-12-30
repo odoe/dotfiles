@@ -190,6 +190,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias vim=nvim
+alias nv=nvim
 
 # setopt prompt_subst
 # PS1='%n@%m $(shrink_path -f)>'
