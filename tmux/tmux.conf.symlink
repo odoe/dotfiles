@@ -9,7 +9,7 @@ set -g history-limit 20000
 set -g renumber-windows on
 
 # status bar
-set -g status-style fg=green,bg=black
+set -g status-style 'fg=#a2e4ae,bg=#2b2b2b'
 
 # Copy Pasta
 set-window-option -g mode-keys vi
