@@ -3,7 +3,14 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/.dotfiles ~/dev ~/Documents/dev ~/Documents/site/www -mindepth 1 -maxdepth 3 -name node_modules -prune -o -type d 2>/dev/null | fzf)
+    selected=$(find ~/.dotfiles ~/dev ~/Documents/dev ~/Documents/site/www \
+        -mindepth 1 -maxdepth 3 \
+        -type d \
+        -not -path "*/node_modules/*" \
+        -not -path "*/sgt/*" \
+        -not -path "*/sgt" \
+        -not -path "*/\.git/*" \
+        2>/dev/null | fzf)
 fi
 
 # if ! tmux has-session -t "$session_name" 2> /dev/null; then
