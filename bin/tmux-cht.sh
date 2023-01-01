@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-languages=$(echo "golang c cpp javascript typescript nodejs nextjs rust cargo elixir" | tr " " "\n")
+languages=$(echo "golang c cpp javascript typescript nodejs nextjs rust cargo elixir bash zsh fzf" | tr " " "\n")
 core_utils=$(echo "find xargs sed awk tar" | tr " " "\n")
 selected=$(echo -e "$languages\n$core_utils" | fzf)
 
