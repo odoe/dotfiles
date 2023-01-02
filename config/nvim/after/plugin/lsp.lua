@@ -47,16 +47,13 @@ lsp.set_preferences({
     }
 })
 
-
-
-
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
-  if client.name == "eslint" then
-      vim.cmd [[ LspStop eslint ]]
-      return
-  end
+  -- if client.name == "eslint" then
+  --     vim.cmd [[ LspStop eslint ]]
+  --     return
+  -- end
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -69,6 +66,8 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+lsp.nvim_workspace()
 
 lsp.setup()
 

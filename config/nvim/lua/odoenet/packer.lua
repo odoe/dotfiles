@@ -45,10 +45,6 @@ return require('packer').startup(function(use)
 
     use("nvim-tree/nvim-web-devicons") -- optional, for file icons
 
-    use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-    })
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -79,12 +75,15 @@ return require('packer').startup(function(use)
         }
     }
 
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+    })
     use('folke/zen-mode.nvim')
     use('editorconfig/editorconfig-vim')
 
     -- Rust
     -- use('simrat39/rust-tools.nvim')
-
 
     use {
         "windwp/nvim-autopairs",
