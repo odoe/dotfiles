@@ -1,5 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+if [[ $OSTYPE == 'darwin'* ]];
+then
+  ZSH_DISABLE_COMPFIX="true"
+  export GUILE_TLS_CERTIFICATE_DIRECTORY=/usr/local/etc/gnutls/
+fi
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -92,6 +98,11 @@ HISTCONTROL=ignoreboth
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
 # umask 022
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+  export PATH="$HOME/Library/Python/3.8/bin:$PATH"
+  export PATH="$HOME/opt/anaconda3/bin:$PATH"
+fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -210,10 +221,6 @@ export FZF_ALT_C_COMMAND="fd --type f"
 # alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 # export DOCKER_HOST=tcp://127.0.0.1:2375
 
-# TMUX
-# case $- in *i*)
-#   if [ -z "$TMUX" ]; then exec tmux; fi;;
-# esac
 [ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
 
 export VOLTA_HOME="$HOME/.volta"
@@ -226,10 +233,18 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="~/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+if [[ $OSTYPE == 'darwin'* ]];
+then
+  # pnpm
+  export PNPM_HOME="/Users/rene8209/Library/pnpm"
+  export PATH="$PNPM_HOME:$PATH"
+  # pnpm end
+else
+  # pnpm
+  export PNPM_HOME="~/.local/share/pnpm"
+  export PATH="$PNPM_HOME:$PATH"
+  # pnpm end
+fi
 
 # Only show neofetch in first terminal instance
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
