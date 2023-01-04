@@ -22,9 +22,10 @@
 -- vim.opt.listchars.tab = '→'
 -- vim.opt.listchars.trail = '⋅'
 -- vim.opt.list = true
-vim.opt.listchars = {
-    eol = '↵',
-    -- extends = '→',
-    trail = '⋅'
-}
-vim.opt.list = true
+-- vim.opt.listchars = {
+--     eol = '↵',
+--     extends = '→',
+--     trail = '⋅'
+-- }
+-- vim.opt.listchars = { tab = '>~', eol = '↵' }
+-- vim.opt.list = true
