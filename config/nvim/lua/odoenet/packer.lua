@@ -27,7 +27,6 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
-    use('p00f/nvim-ts-rainbow')
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
 
@@ -53,6 +52,10 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
+            {
+                "glepnir/lspsaga.nvim",
+                branch = "main",
+            },
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
@@ -75,11 +78,11 @@ return require('packer').startup(function(use)
         }
     }
 
-    use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-    })
-    use('folke/zen-mode.nvim')
+    -- use({
+    --     "glepnir/lspsaga.nvim",
+    --     branch = "main",
+    -- })
+    -- use('folke/zen-mode.nvim')
     use('editorconfig/editorconfig-vim')
 
     -- Rust
@@ -90,5 +93,6 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
 
+    use('p00f/nvim-ts-rainbow')
 end)
 
