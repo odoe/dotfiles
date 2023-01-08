@@ -52,10 +52,10 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
-            {
-                "glepnir/lspsaga.nvim",
-                branch = "main",
-            },
+            -- {
+            --     "glepnir/lspsaga.nvim",
+            --     branch = "main",
+            -- },
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
@@ -78,10 +78,10 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- use({
-    --     "glepnir/lspsaga.nvim",
-    --     branch = "main",
-    -- })
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+    })
     -- use('folke/zen-mode.nvim')
     use('editorconfig/editorconfig-vim')
 
