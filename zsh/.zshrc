@@ -6,6 +6,7 @@ then
   export GUILE_TLS_CERTIFICATE_DIRECTORY=/usr/local/etc/gnutls/
 fi
 
+export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -15,8 +16,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="lambda"
-# VIM="nvim"
-export TERM="xterm-256color"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -99,88 +98,7 @@ HISTCONTROL=ignoreboth
 # for ssh logins, install and configure the libpam-umask package.
 # umask 022
 
-if [[ $OSTYPE == 'darwin'* ]]; then
-  export PATH="$HOME/Library/Python/3.8/bin:$PATH"
-  export PATH="$HOME/opt/anaconda3/bin:$PATH"
-fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/.dotfiles/bin" ] ; then
-    PATH="$HOME/.dotfiles/bin:$PATH"
-fi
-
-# DOTNET
-# for ZSH
-case "$OSTYPE" in
-  darwin*)
-    # ...
-  ;;
-  linux*)
-    export DOTNET_ROOT=/snap/dotnet-sdk/current
-  ;;
-  dragonfly*|freebsd*|netbsd*|openbsd*)
-    # ...
-  ;;
-esac
-
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH=$PATH:'~/.local/bin':$PATH
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-export PATH=$PATH:'/usr/local/go/bin':$PATH
-
-# diff-so-fancy
-export PATH=$PATH:'~/.config/diff-so-fancy/lib':$PATH
-
-# dumb oracle shit
-export LD_LIBRARY_PATH=/opt/oracle/instantclient:$LD_LIBRARY_PATH
-export OCI_LIB_DIR=/opt/oracle/instantclient/sdk/include:$OCI_LIB_DIR
-
-export NVM_DIR="$HOME/.nvm"
-function load-nvm () {
-  if [[ $OSTYPE == "darwin"* ]]; then
-    export NVM_DIR=~/.nvm
-    [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
-  else
-    [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
-  fi
-}
-
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    if ! type nvm >/dev/null; then
-      load-nvm
-    fi
-    nvm use
-  fi
-}
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-                                                                                                        
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -198,53 +116,28 @@ alias l='ls -CF'
 alias vim=nvim
 alias nv=nvim
 
-# setopt prompt_subst
-# PS1='%n@%m $(shrink_path -f)>'
-local ret_status="%(?:%{$fg_bold[green]%}λ :%{$fg_bold[red]%}λ )"
-PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-# FZF remaps
-export FZF_DEFAULT_COMMAND="fd --type f"
-export FZF_CTRL_T_COMMAND="fd --type f"
-export FZF_ALT_C_COMMAND="fd --type f"
+function load-nvm () {
+  if [[ $OSTYPE == "darwin"* ]]; then
+    export NVM_DIR=~/.nvm
+    [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+  else
+    [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+  fi
+}
 
-# Powerline config
-# POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-# alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-# export DOCKER_HOST=tcp://127.0.0.1:2375
-
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# rbenv
-# eval "$(rbenv init -)"
-
-# deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-if [[ $OSTYPE == 'darwin'* ]];
-then
-  # pnpm
-  export PNPM_HOME="/Users/rene8209/Library/pnpm"
-  export PATH="$PNPM_HOME:$PATH"
-  # pnpm end
-else
-  # pnpm
-  export PNPM_HOME="~/.local/share/pnpm"
-  export PATH="$PNPM_HOME:$PATH"
-  # pnpm end
-fi
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    if ! type nvm >/dev/null; then
+      load-nvm
+    fi
+    nvm use
+  fi
+}
 
 # Only show neofetch in first terminal instance
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
@@ -255,6 +148,3 @@ if [ $LIVE_COUNTER -eq 2 ]; then
       fi
     fi
 fi
-
-# Bindings
-bindkey -s ^f "~/.dotfiles/bin/tmux-sessionizer\n"
