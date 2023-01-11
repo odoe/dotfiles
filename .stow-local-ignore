@@ -17,6 +17,7 @@ _darcs
 
 \.git
 \.gitignore
+\install.sh
 
 .+~          # emacs backup files
 \#.*\#       # emacs autosave files
