@@ -110,8 +110,8 @@ HISTCONTROL=ignoreboth
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source zsh-aliases
-source zsh-prompt
+source $HOME/zsh-aliases
+source $HOME/zsh-prompt
 
 function load-nvm () {
   if [[ $OSTYPE == "darwin"* ]]; then
