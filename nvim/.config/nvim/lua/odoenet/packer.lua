@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     use({
@@ -20,12 +20,12 @@ return require('packer').startup(function(use)
         end
     })
     -- You can alias plugin names
-    use {'dracula/vim', as = 'dracula'}
+    use { 'dracula/vim', as = 'dracula' }
     use('folke/tokyonight.nvim')
     use { "catppuccin/nvim", as = "catppuccin" }
     use('challenger-deep-theme/vim')
 
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/nvim-treesitter-context')
     use('nvim-treesitter/playground')
     use('theprimeagen/harpoon')
@@ -50,25 +50,25 @@ return require('packer').startup(function(use)
         'VonHeikemen/lsp-zero.nvim',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
             -- {
             --     "glepnir/lspsaga.nvim",
             --     branch = "main",
             -- },
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
 
             -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
             {
                 "j-hui/fidget.nvim",
                 event = "BufReadPre",
@@ -82,6 +82,9 @@ return require('packer').startup(function(use)
     use({
         "glepnir/lspsaga.nvim",
         branch = "main",
+        config = function()
+            require('lspsaga').setup({})
+        end,
     })
     -- use('folke/zen-mode.nvim')
     use('editorconfig/editorconfig-vim')
@@ -96,4 +99,3 @@ return require('packer').startup(function(use)
 
     use('p00f/nvim-ts-rainbow')
 end)
-
