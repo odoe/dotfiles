@@ -88,9 +88,16 @@ return require('packer').startup(function(use)
     })
     -- use('folke/zen-mode.nvim')
     use('editorconfig/editorconfig-vim')
-
-    -- Rust
-    -- use('simrat39/rust-tools.nvim')
+    use({
+        "Pocco81/true-zen.nvim",
+        config = function()
+            require("true-zen").setup {
+                -- your config goes here
+                -- or just leave it empty :)
+            }
+        end,
+    })
+    -- Rust use('simrat39/rust-tools.nvim')
 
     use {
         "windwp/nvim-autopairs",
@@ -98,4 +105,44 @@ return require('packer').startup(function(use)
     }
 
     use('p00f/nvim-ts-rainbow')
+
+    use {
+        "nvim-neorg/neorg",
+        config = function()
+            require('neorg').setup {
+                load = {
+                    ["core.defaults"] = {}, -- Loads default behaviour
+                    ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.presenter"] = {
+                        config = {
+                            zen_mode = "truezen"
+                        }
+                    },
+                    ["core.norg.dirman"] = { -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                                presentations = "~/presentations"
+                            },
+                        },
+                    },
+                },
+            }
+        end,
+        ft = "norg",
+        run = ":Neorg sync-parsers",
+        after = "nvim-treesitter",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            {
+                "Pocco81/true-zen.nvim",
+                config = function()
+                    require("true-zen").setup {
+                        -- your config goes here
+                        -- or just leave it empty :)
+                    }
+                end,
+            }
+        },
+    }
 end)
