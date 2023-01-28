@@ -9,7 +9,7 @@ keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
 keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 
 -- Rename
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>")
+keymap("n", "<leader>gr", "<cmd>Lspsaga rename<CR>")
 
 -- Peek Definition
 -- you can edit the definition file in this flaotwindow
