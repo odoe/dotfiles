@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
                     ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
                     ["core.presenter"] = {
                         config = {
-                            zen_mode = "truezen"
+                            zen_mode = "zen-mode"
                         }
                     },
                     ["core.norg.dirman"] = { -- Manages Neorg workspaces
@@ -135,9 +135,9 @@ return require('packer').startup(function(use)
         requires = {
             "nvim-lua/plenary.nvim",
             {
-                "Pocco81/true-zen.nvim",
+                "folke/zen-mode.nvim",
                 config = function()
-                    require("true-zen").setup {
+                    require("zen-mode").setup {
                         -- your config goes here
                         -- or just leave it empty :)
                     }
