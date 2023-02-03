@@ -1,0 +1,3 @@
+[submodule "personal/notes"]
+	path = personal/notes
+	url = git@github.com:odoe/notes_vault.git
