@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# flatpak command for music player
+flatpak run com.github.taiko2k.tauonmb
