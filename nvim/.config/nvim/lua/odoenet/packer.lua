@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
     -- You can alias plugin names
     use { 'dracula/vim', as = 'dracula' }
     use('folke/tokyonight.nvim')
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use { 'catppuccin/nvim', as = 'catppuccin' }
     use('challenger-deep-theme/vim')
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
     --     tag = 'nightly' -- optional, updated every week. (see issue #1193)
     -- }
 
-    use("nvim-tree/nvim-web-devicons") -- optional, for file icons
+    use('nvim-tree/nvim-web-devicons') -- optional, for file icons
 
 
     use {
@@ -54,8 +54,8 @@ return require('packer').startup(function(use)
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
             -- {
-            --     "glepnir/lspsaga.nvim",
-            --     branch = "main",
+            --     'glepnir/lspsaga.nvim',
+            --     branch = 'main',
             -- },
 
             -- Autocompletion
@@ -70,28 +70,33 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
             {
-                "j-hui/fidget.nvim",
-                event = "BufReadPre",
+                'j-hui/fidget.nvim',
+                event = 'BufReadPre',
                 config = function()
-                    require("fidget").setup {}
+                    require('fidget').setup {}
                 end,
             },
         }
     }
 
     use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
+        'glepnir/lspsaga.nvim',
+        branch = 'main',
         config = function()
             require('lspsaga').setup({})
         end,
+        requires = {
+            { 'nvim-tree/nvim-web-devicons' },
+            --Please make sure you install markdown and markdown_inline parser
+            { 'nvim-treesitter/nvim-treesitter' }
+        }
     })
     -- use('folke/zen-mode.nvim')
     use('editorconfig/editorconfig-vim')
     use({
-        "Pocco81/true-zen.nvim",
+        'Pocco81/true-zen.nvim',
         config = function()
-            require("true-zen").setup {
+            require('true-zen').setup {
                 -- your config goes here
                 -- or just leave it empty :)
             }
@@ -100,44 +105,44 @@ return require('packer').startup(function(use)
     -- Rust use('simrat39/rust-tools.nvim')
 
     use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {} end
     }
 
     use('p00f/nvim-ts-rainbow')
 
     use {
-        "nvim-neorg/neorg",
+        'nvim-neorg/neorg',
         config = function()
             require('neorg').setup {
                 load = {
-                    ["core.defaults"] = {}, -- Loads default behaviour
-                    ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.presenter"] = {
+                    ['core.defaults'] = {},       -- Loads default behaviour
+                    ['core.norg.concealer'] = {}, -- Adds pretty icons to your documents
+                    ['core.presenter'] = {
                         config = {
-                            zen_mode = "zen-mode"
+                            zen_mode = 'zen-mode'
                         }
                     },
-                    ["core.norg.dirman"] = { -- Manages Neorg workspaces
+                    ['core.norg.dirman'] = { -- Manages Neorg workspaces
                         config = {
                             workspaces = {
-                                notes = "~/notes",
-                                presentations = "~/presentations"
+                                notes = '~/notes',
+                                presentations = '~/presentations'
                             },
                         },
                     },
                 },
             }
         end,
-        ft = "norg",
-        run = ":Neorg sync-parsers",
-        after = "nvim-treesitter",
+        ft = 'norg',
+        run = ':Neorg sync-parsers',
+        after = 'nvim-treesitter',
         requires = {
-            "nvim-lua/plenary.nvim",
+            'nvim-lua/plenary.nvim',
             {
-                "folke/zen-mode.nvim",
+                'folke/zen-mode.nvim',
                 config = function()
-                    require("zen-mode").setup {
+                    require('zen-mode').setup {
                         -- your config goes here
                         -- or just leave it empty :)
                     }
