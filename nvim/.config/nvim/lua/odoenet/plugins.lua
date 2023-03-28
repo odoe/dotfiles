@@ -1,15 +1,16 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -33,8 +34,18 @@ local plugins = {
     { 'catppuccin/nvim', as = 'catppuccin' },
     'challenger-deep-theme/vim',
 
+    {
+        -- Highlight, edit, and navigate code
+        'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        config = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
+    },
     -- { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } },
-    'nvim-treesitter/nvim-treesitter',
+    -- 'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/playground',
     'theprimeagen/harpoon',
@@ -53,7 +64,6 @@ local plugins = {
     -- }
 
     'nvim-tree/nvim-web-devicons', -- optional, for file icons
-
 
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -95,9 +105,9 @@ local plugins = {
             require('lspsaga').setup({})
         end,
         dependencies = {
-          {"nvim-tree/nvim-web-devicons"},
-          --Please make sure you install markdown and markdown_inline parser
-          {"nvim-treesitter/nvim-treesitter"}
+            { "nvim-tree/nvim-web-devicons" },
+            --Please make sure you install markdown and markdown_inline parser
+            { "nvim-treesitter/nvim-treesitter" }
         }
     },
     -- 'folke/zen-mode.nvim',
@@ -125,14 +135,14 @@ local plugins = {
         config = function()
             require('neorg').setup {
                 load = {
-                        ['core.defaults'] = {},   -- Loads default behaviour
-                        ['core.norg.concealer'] = {}, -- Adds pretty icons to your documents
-                        ['core.presenter'] = {
+                    ['core.defaults'] = {},       -- Loads default behaviour
+                    ['core.norg.concealer'] = {}, -- Adds pretty icons to your documents
+                    ['core.presenter'] = {
                         config = {
                             zen_mode = 'zen-mode'
                         }
                     },
-                        ['core.norg.dirman'] = { -- Manages Neorg workspaces
+                    ['core.norg.dirman'] = { -- Manages Neorg workspaces
                         config = {
                             workspaces = {
                                 notes = '~/notes',
@@ -158,7 +168,9 @@ local plugins = {
                 end,
             }
         },
-    }
+    },
+
+    -- { import = 'odoenet.plugin_config' }
 }
 
 local opts = {}
