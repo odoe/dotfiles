@@ -1,6 +1,6 @@
 window:
   opacity: 0.8
 font:
-  size: 8.0
+  size: 10.0
   normal:
-    family: "MesloLGSDZ Nerd Font"
+    family: "Hack Nerd Font"
