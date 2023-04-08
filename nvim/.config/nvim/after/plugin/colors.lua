@@ -1,8 +1,6 @@
 -- Creates an object for the module.
 local M = {}
 
--- Fetches todo tasks from the database and
--- prints the output.
 function M.ColorMyPencils(color)
         -- color = color or "dracula"
         -- color = color or "tokyonight-night"
