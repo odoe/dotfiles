@@ -1,4 +1,4 @@
 require("odoenet.plugins")
-require("odoenet.remap")
-require("odoenet.set")
+require("odoenet.keymaps")
+require("odoenet.options")
 require("odoenet.config.plugins")
