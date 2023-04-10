@@ -42,5 +42,6 @@ require('telescope').setup({
             },
             n = i,
         },
+
     }
 })
