@@ -6,7 +6,7 @@ then
   export GUILE_TLS_CERTIFICATE_DIRECTORY=/usr/local/etc/gnutls/
 fi
 
-export TERM="xterm-256color"
+export TERM="tmux-256color"
 
 export EDITOR="nvim"
 
