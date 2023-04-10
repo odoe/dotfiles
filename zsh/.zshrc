@@ -210,24 +210,6 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 # Functions
 
-function load-nvm () {
-  if [[ $OSTYPE == "darwin"* ]]; then
-    export NVM_DIR=~/.nvm
-    [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
-  else
-    [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
-  fi
-}
-
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    if ! type nvm >/dev/null; then
-      load-nvm
-    fi
-    nvm use
-  fi
-}
-
 # Only show neofetch in first terminal instance
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
 if [ $LIVE_COUNTER -eq 2 ]; then
