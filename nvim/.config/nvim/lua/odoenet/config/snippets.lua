@@ -28,65 +28,53 @@ keymap("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
 keymap("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 keymap("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
-  -- static async importWidgetExpand(): Promise<typeof __esri.Expand> {
-  --   if (amd) {
-  --     return requireModule("esri/widgets/Expand");
-  --   }
-  --   const module = await import("@arcgis/core/widgets/Expand");
-  --   return module.default;
-  -- }
-
-  -- static async newWidgetExpand(definition: __esri.ExpandProperties): Promise<__esri.Expand> {
-  --   const Widget = await this.importWidgetExpand();
-  --   return new Widget(definition);
-  -- }
+-- https://www.youtube.com/watch?v=KtQZRAkgLqo
+local same = function(index)
+    return func(function(arg)
+        return arg[1]
+    end, { index })
+end
 
 ls.add_snippets(nil, {
     typescript = {
         snip({
-                trig = "stwi",
-                name = "StencilWidgetStuff",
-                description = "Stencil Widget stuff"
-            },
-            {
-                text({"static async importWidget"}),
-                insert(1, "Name"),
-                text({"(): Promise<typeof __esri."}),
-                insert(2, "Name"),
-                text({"> {",
-                "    if (amd) {"}),
-                text({"\t", '        return requireModule("esri/widgets/'}),
-                insert(3, "Name"),
-                text('");'),
-                text { "", "    }" },
-                text({"\t", '    const module = await import("@arcgis/core/widgets/'}),
-                insert(4, "Name"),
-                text('");'),
-                text({ "\t", "    return module.default;"}),
-                text {"", "}" },
-                insert(0),
-            }
-        ),
-        snip({
-            trig = "stwn",
-            name = "NewStencilWidgetStuff",
-            description = "New Stencil Widget stuff"
+            trig = "stw",
+            name = "StencilWidgetStuff",
+            description = "Stencil Widget stuff"
         },
         {
-            text({"static async newWidget"}),
+            text({"static async importWidget"}),
             insert(1, "Name"),
-            text({"(definition: __esri."}),
-            insert(2, "Name"),
-            text({"Properties): Promise<__esri."}),
-            insert(3, "Name"),
+            text({"(): Promise<typeof __esri."}),
+            same(1),
             text({"> {",
-            "    const Widget = await this.importWidget"}),
-            insert(4, "Name"),
+            "  if (amd) {"}),
+            text({"\t", '        return requireModule("esri/widgets/'}),
+            same(1),
+            text('");'),
+            text { "", "  }" },
+            text({"\t", '  const module = await import("@arcgis/core/widgets/'}),
+            same(1),
+            text('");'),
+            text({ "\t", "  return module.default;"}),
+            text {"", "}" },
+            text({"\t", ""}),
+            text({"\t", ""}),
+            text({"static async newWidget"}),
+            same(1),
+            text({"(definition: __esri."}),
+            same(1),
+            text({"Properties): Promise<__esri."}),
+            same(1),
+            text({"> {",
+            "  const Widget = await this.importWidget"}),
+            same(1),
             text({"();"}),
-            text({"", "    return new Widget(definition);"}),
+            text({"", "  return new Widget(definition);"}),
             text({"", "}"}),
             insert(0),
         }
-    )
+
+        ),
     }
 })
