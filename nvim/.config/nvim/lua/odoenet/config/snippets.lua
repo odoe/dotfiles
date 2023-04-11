@@ -28,13 +28,6 @@ keymap("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
 keymap("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 keymap("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
--- https://www.youtube.com/watch?v=KtQZRAkgLqo
-local same = function(index)
-    return func(function(arg)
-        return arg[1]
-    end, { index })
-end
-
 ls.add_snippets(nil, {
     typescript = {
         snip({
@@ -46,29 +39,29 @@ ls.add_snippets(nil, {
             text({"static async importWidget"}),
             insert(1, "Name"),
             text({"(): Promise<typeof __esri."}),
-            same(1),
+            rep(1),
             text({"> {",
             "  if (amd) {"}),
             text({"\t", '        return requireModule("esri/widgets/'}),
-            same(1),
+            rep(1),
             text('");'),
             text { "", "  }" },
             text({"\t", '  const module = await import("@arcgis/core/widgets/'}),
-            same(1),
+            rep(1),
             text('");'),
             text({ "\t", "  return module.default;"}),
             text {"", "}" },
             text({"\t", ""}),
             text({"\t", ""}),
             text({"static async newWidget"}),
-            same(1),
+            rep(1),
             text({"(definition: __esri."}),
-            same(1),
+            rep(1),
             text({"Properties): Promise<__esri."}),
-            same(1),
+            rep(1),
             text({"> {",
             "  const Widget = await this.importWidget"}),
-            same(1),
+            rep(1),
             text({"();"}),
             text({"", "  return new Widget(definition);"}),
             text({"", "}"}),
