@@ -112,6 +112,8 @@ local plugins = {
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
+            { 'jose-elias-alvarez/null-ls.nvim' },
+            { 'MunifTanjim/prettier.nvim' },
 
             -- Snippets
             -- {
