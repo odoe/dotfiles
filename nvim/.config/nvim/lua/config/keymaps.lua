@@ -12,6 +12,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- copy everything between { and } including brackets --
+
+vim.keymap.set("n", "YY", "va{Vy", opts)
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
