@@ -141,6 +141,7 @@ local plugins = {
             { 'hrsh7th/cmp-nvim-lua' },
             { 'jose-elias-alvarez/null-ls.nvim' },
             { 'MunifTanjim/prettier.nvim' },
+            { 'lewis6991/gitsigns.nvim' },
 
             -- Snippets
             -- {
