@@ -66,3 +66,9 @@ vim.keymap.set('n', '<leader>gg', '<cmd>FloatermNew lazygit<CR>')
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
 
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- DAP
+-- vim.keymap.set('n', '<leader>dt', ':DapUiToggle<CR>', opts)
+-- vim.keymap.set('n', '<leader>db', ':DapToggleBreakpoint<CR>', opts)
+-- vim.keymap.set('n', '<leader>dc', ':DapContinue<CR>', opts)
+-- vim.keymap.set('n', '<leader>dr', ":lua require('dapui').open({reset = true})<CR>", opts)
