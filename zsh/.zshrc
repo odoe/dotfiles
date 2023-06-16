@@ -121,6 +121,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
 # some more ls aliases
   export PATH="$HOME/Library/Python/3.8/bin:$PATH"
   export PATH="$HOME/opt/anaconda3/bin:$PATH"
+  export PATH="$HOME/nvim-macos/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
@@ -208,24 +209,6 @@ export FZF_ALT_C_COMMAND="fd --type f"
 bindkey -s ^f "tmux-sessionizer\n"
 
 # Functions
-
-function load-nvm () {
-  if [[ $OSTYPE == "darwin"* ]]; then
-    export NVM_DIR=~/.nvm
-    [[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
-  else
-    [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
-  fi
-}
-
-load-nvmrc() {
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    if ! type nvm >/dev/null; then
-      load-nvm
-    fi
-    nvm use
-  fi
-}
 
 # Only show neofetch in first terminal instance
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);

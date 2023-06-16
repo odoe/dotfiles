@@ -142,8 +142,8 @@ set $ws9 "9"
 set $ws10 "10"
 
 # gaps
-# gaps inner 5
-# gaps outer 5
+gaps inner 4
+gaps outer 4
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

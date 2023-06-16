@@ -1,6 +1,8 @@
 window:
   opacity: 0.8
 font:
-  size: 10.0
+  size: 12.0
   normal:
-    family: "JetBrainsMono Nerd Font"
+    family: "Hack Nerd Font"
+env:
+  WINIT_X11_SCALE_FACTOR: "1.0"
