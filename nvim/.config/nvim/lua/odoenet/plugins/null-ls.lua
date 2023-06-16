@@ -15,7 +15,7 @@ return {
 				formatting.prettierd,
 				formatting.eslint_d,
 				diagnostics.eslint_d,
-				diagnostics.tsc,
+				-- diagnostics.tsc,
 				code_actions.eslint_d,
 				code_actions.gitsigns,
 				completion.spell,
