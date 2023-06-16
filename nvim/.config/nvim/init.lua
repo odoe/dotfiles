@@ -119,8 +119,27 @@ local plugins = {
 		dependencies = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' },
-			{ 'williamboman/mason.nvim' },
-			{ 'williamboman/mason-lspconfig.nvim' },
+			-- { 'williamboman/mason-lspconfig.nvim' },
+			-- {
+			-- 	'williamboman/mason.nvim',
+			-- 	opts = function(_, opts)
+			-- 		table.insert(opts.ensure_installed, 'prettierd')
+			-- 	end,
+			-- },
+			{
+				'jay-babu/mason-null-ls.nvim',
+				event = { 'BufReadPre', 'BufNewFile' },
+				dependencies = {
+					'williamboman/mason.nvim',
+					'jose-elias-alvarez/null-ls.nvim',
+				},
+				config = function()
+					require('mason-null-ls').setup {
+						ensure_installed = { 'stylua', 'prettierd', 'eslint_d' },
+					}
+					require 'odoenet.plugins.null-ls'
+				end,
+			},
 
 			-- Autocompletion
 			{
@@ -133,7 +152,7 @@ local plugins = {
 				},
 			},
 			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
+			-- { 'hrsh7th/cmp-path' },
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-nvim-lua' },
