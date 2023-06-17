@@ -10,27 +10,29 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim",                                import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim",                                    import = "lazyvim.plugins" },
     -- import any extras modules here
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "plugins" },
-    {
-      "williamboman/mason.nvim",
-      opts = function(_, opts)
-        table.insert(opts.ensure_installed, "prettierd")
-      end,
-    },
-    {
-      "jose-elias-alvarez/null-ls.nvim",
-      opts = function(_, opts)
-        local nls = require("null-ls")
-        table.insert(opts.sources, nls.builtins.formatting.prettierd)
-      end,
-    }
+    -- {
+    --   "williamboman/mason.nvim",
+    --   opts = function(_, opts)
+    --     table.insert(opts.ensure_installed, "prettierd")
+    --   end,
+    -- },
+    -- {
+    --   "jose-elias-alvarez/null-ls.nvim",
+    --   opts = function(_, opts)
+    --     local nls = require("null-ls")
+    --     table.insert(opts.sources, nls.builtins.formatting.prettierd)
+    --   end,
+    -- },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -41,7 +43,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "catppuccin", "tokyonight", "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
@@ -59,3 +61,10 @@ require("lazy").setup({
     },
   },
 })
+
+require("notify").setup({
+  background_colour = "#000000",
+})
+
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
