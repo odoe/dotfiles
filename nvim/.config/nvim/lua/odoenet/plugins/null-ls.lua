@@ -4,18 +4,26 @@ return {
 	event = { 'BufReadPre', 'BufNewFile' },
 	dependencies = { 'mason.nvim' },
 	opts = function()
+		local lspconfig = require 'lspconfig'
 		local null_ls = require 'null-ls'
 		local formatting = null_ls.builtins.formatting
 		local diagnostics = null_ls.builtins.diagnostics
 		local code_actions = null_ls.builtins.code_actions
 		local completion = null_ls.builtins.completion
+
+		lspconfig.tsserver.setup({
+			on_attach = function(client, bufnr)
+				client.resolved_capabilities.document_formatting = false
+			end,
+		})
+
 		return {
+			debug = true,
 			sources = {
 				formatting.stylua,
 				formatting.prettierd,
 				formatting.eslint_d,
 				diagnostics.eslint_d,
-				-- diagnostics.tsc,
 				code_actions.eslint_d,
 				code_actions.gitsigns,
 				completion.spell,
@@ -32,7 +40,8 @@ return {
 				callback = function()
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 					-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-					vim.lsp.buf.formatting_sync {
+					vim.lsp.buf.format {
+						async = true,
 						bufnr = bufnr,
 						filter = function(_client)
 							return _client.name == 'null-ls'

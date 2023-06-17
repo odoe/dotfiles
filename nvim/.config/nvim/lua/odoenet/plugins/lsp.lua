@@ -16,7 +16,85 @@ return {
 		'hrsh7th/nvim-cmp',
 		event = 'InsertEnter',
 		dependencies = {
-			{ 'L3MON4D3/LuaSnip' },
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+			{
+				'jay-babu/mason-null-ls.nvim',
+				event = { 'BufReadPre', 'BufNewFile' },
+				dependencies = {
+					'williamboman/mason.nvim',
+					'jose-elias-alvarez/null-ls.nvim',
+				},
+				config = function()
+					require('mason-null-ls').setup {
+						ensure_installed = { 'stylua', 'prettierd', 'eslint_d' },
+					}
+					require 'odoenet.plugins.null-ls'
+				end,
+			},
+
+			-- Autocompletion
+			{
+				'hrsh7th/nvim-cmp',
+				dependencies = {
+					'L3MON4D3/LuaSnip',
+					config = function()
+						require 'odoenet.config.snippets'
+					end,
+				},
+			},
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'saadparwaiz1/cmp_luasnip' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-nvim-lua' },
+			{ 'jose-elias-alvarez/null-ls.nvim' },
+			{ 'MunifTanjim/prettier.nvim' },
+			{ 'lewis6991/gitsigns.nvim' },
+
+			-- Snippets
+			{ 'rafamadriz/friendly-snippets' },
+			-- lazy.nvim
+			{
+				'folke/noice.nvim',
+				config = function()
+					require('noice').setup {
+						lsp = {
+							hover = {
+								enabled = false,
+							},
+							signature = {
+								enabled = false,
+							},
+							-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+							override = {
+								['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+								['vim.lsp.util.stylize_markdown'] = true,
+								['cmp.entry.get_documentation'] = true,
+							},
+						},
+						-- you can enable a preset for easier configuration
+						presets = {
+							bottom_search = false, -- use a classic bottom cmdline for search
+							-- command_palette = true, -- position the cmdline and popupmenu together
+							long_message_to_split = true, -- long messages will be sent to a split
+							inc_rename = true, -- enables an input dialog for inc-rename.nvim
+							lsp_doc_border = true, -- add a border to hover docs and signature help
+						},
+					}
+					require("notify").setup({
+						background_colour = "#000000",
+					})
+				end,
+				event = 'VeryLazy',
+				dependencies = {
+					-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+					'MunifTanjim/nui.nvim',
+					-- OPTIONAL:
+					--   `nvim-notify` is only needed, if you want to use the notification view.
+					--   If not available, we use `mini` as the fallback
+					'rcarriga/nvim-notify',
+				},
+			},
 		},
 		config = function()
 			-- Here is where you configure the autocompletion settings.
@@ -33,10 +111,7 @@ return {
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
-						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 						require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 					end,
 				},
 				window = {
@@ -77,14 +152,6 @@ return {
 					{ name = 'buffer' },
 				},
 			})
-
-			-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-			-- cmp.setup.cmdline(':', {
-			-- 	mapping = cmp.mapping.preset.cmdline(),
-			-- 	sources = cmp.config.sources {
-			-- 		{ name = 'cmdline' },
-			-- 	},
-			-- })
 		end,
 	},
 

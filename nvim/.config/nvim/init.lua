@@ -30,14 +30,8 @@ local plugins = {
 		end,
 	},
 
-	-- {
-	--     'rose-pine/neovim',
-	--     name = 'rose-pine',
-	--     config = function()
-	--         vim.cmd('colorscheme rose-pine')
-	--     end
-	-- },
-	{ 'Mofiqul/dracula.nvim', name = 'dracula' },
+	-- Themes
+	{ 'Mofiqul/dracula.nvim',    name = 'dracula' },
 	'folke/tokyonight.nvim',
 	{
 		'catppuccin/nvim',
@@ -48,7 +42,9 @@ local plugins = {
 			vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 		end,
 	},
-	'challenger-deep-theme/vim',
+	{
+		'challenger-deep-theme/vim',
+	},
 	{
 		-- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
@@ -62,8 +58,7 @@ local plugins = {
 			require 'odoenet.config.treesitter'
 		end,
 	},
-	-- { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } },
-	-- 'nvim-treesitter/nvim-treesitter',
+
 	'nvim-treesitter/nvim-treesitter-context',
 	'nvim-treesitter/playground',
 	{
@@ -104,6 +99,20 @@ local plugins = {
 	'voldikss/vim-floaterm',
 	'tpope/vim-commentary',
 
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		}
+	},
+
 	-- {
 	--     'nvim-tree/nvim-tree.lua',
 	--     dependencies = {
@@ -113,103 +122,6 @@ local plugins = {
 	-- }
 
 	'nvim-tree/nvim-web-devicons', -- optional, for file icons
-
-	{
-		'VonHeikemen/lsp-zero.nvim',
-		dependencies = {
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
-			-- { 'williamboman/mason-lspconfig.nvim' },
-			-- {
-			-- 	'williamboman/mason.nvim',
-			-- 	opts = function(_, opts)
-			-- 		table.insert(opts.ensure_installed, 'prettierd')
-			-- 	end,
-			-- },
-			{
-				'jay-babu/mason-null-ls.nvim',
-				event = { 'BufReadPre', 'BufNewFile' },
-				dependencies = {
-					'williamboman/mason.nvim',
-					'jose-elias-alvarez/null-ls.nvim',
-				},
-				config = function()
-					require('mason-null-ls').setup {
-						ensure_installed = { 'stylua', 'prettierd', 'eslint_d' },
-					}
-					require 'odoenet.plugins.null-ls'
-				end,
-			},
-
-			-- Autocompletion
-			{
-				'hrsh7th/nvim-cmp',
-				dependencies = {
-					'L3MON4D3/LuaSnip',
-					config = function()
-						require 'odoenet.config.snippets'
-					end,
-				},
-			},
-			{ 'hrsh7th/cmp-buffer' },
-			-- { 'hrsh7th/cmp-path' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-nvim-lua' },
-			{ 'jose-elias-alvarez/null-ls.nvim' },
-			{ 'MunifTanjim/prettier.nvim' },
-			{ 'lewis6991/gitsigns.nvim' },
-
-			-- Snippets
-			{ 'rafamadriz/friendly-snippets' },
-			-- lazy.nvim
-			{
-				'folke/noice.nvim',
-				config = function()
-					require('noice').setup {
-						lsp = {
-							hover = {
-								enabled = false,
-							},
-							signature = {
-								enabled = false,
-							},
-							-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-							override = {
-								['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-								['vim.lsp.util.stylize_markdown'] = true,
-								['cmp.entry.get_documentation'] = true,
-							},
-						},
-						-- you can enable a preset for easier configuration
-						presets = {
-							bottom_search = false, -- use a classic bottom cmdline for search
-							-- command_palette = true, -- position the cmdline and popupmenu together
-							long_message_to_split = true, -- long messages will be sent to a split
-							inc_rename = true, -- enables an input dialog for inc-rename.nvim
-							lsp_doc_border = true, -- add a border to hover docs and signature help
-						},
-					}
-				end,
-				event = 'VeryLazy',
-				dependencies = {
-					-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-					'MunifTanjim/nui.nvim',
-					-- OPTIONAL:
-					--   `nvim-notify` is only needed, if you want to use the notification view.
-					--   If not available, we use `mini` as the fallback
-					'rcarriga/nvim-notify',
-				},
-			},
-			-- {
-			--     'j-hui/fidget.nvim',
-			--     event = 'BufReadPre',
-			--     config = function()
-			--         require('fidget').setup {}
-			--     end,
-			-- },
-		},
-	},
 
 	{
 		'glepnir/lspsaga.nvim',
@@ -224,7 +136,7 @@ local plugins = {
 			{ 'nvim-treesitter/nvim-treesitter' },
 		},
 	},
-	-- 'folke/zen-mode.nvim',
+
 	'editorconfig/editorconfig-vim',
 	{
 		'Pocco81/true-zen.nvim',
