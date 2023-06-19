@@ -10,12 +10,14 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim",                                    import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.tailwind" },
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "plugins" },
@@ -65,7 +67,7 @@ require("notify").setup({
   background_colour = "#000000",
 })
 
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all"
   ensure_installed = { "javascript", "typescript", "c", "lua", "rust", "markdown", "markdown_inline" },
 
@@ -90,8 +92,8 @@ require 'nvim-treesitter.configs'.setup {
     enable = true,
     extended_mode = true,
     max_file_lines = nil,
-  }
-}
+  },
+})
 
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
