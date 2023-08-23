@@ -10,7 +10,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim",                                    import = "lazyvim.plugins" },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
@@ -88,11 +88,12 @@ require("nvim-treesitter.configs").setup({
     additional_vim_regex_highlighting = false,
   },
   ident = { enable = true },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-  },
+  build = ":TSUpdate",
+  -- rainbow = {
+  --   enable = true,
+  --   extended_mode = true,
+  --   max_file_lines = nil,
+  -- },
 })
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

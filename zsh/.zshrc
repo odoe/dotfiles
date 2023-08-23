@@ -122,6 +122,8 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export PATH="$HOME/Library/Python/3.8/bin:$PATH"
   export PATH="$HOME/opt/anaconda3/bin:$PATH"
   export PATH="$HOME/nvim-macos/bin:$PATH"
+else
+  export PATH="$HOME/nvim-linux64/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists

@@ -32,7 +32,7 @@ return {
     },
   },
   { "editorconfig/editorconfig-vim" },
-  { "p00f/nvim-ts-rainbow" },
+  -- { "p00f/nvim-ts-rainbow" },
   {
     -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
