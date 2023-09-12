@@ -221,3 +221,10 @@ if [ $LIVE_COUNTER -eq 2 ]; then
       fi
     fi
 fi
+
+# bun completions
+[ -s "/Users/rene8209/.bun/_bun" ] && source "/Users/rene8209/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
