@@ -223,7 +223,7 @@ if [ $LIVE_COUNTER -eq 2 ]; then
 fi
 
 # bun completions
-[ -s "/Users/rene8209/.bun/_bun" ] && source "/Users/rene8209/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
