@@ -46,4 +46,5 @@ return {
       require("config.treesitter")
     end,
   },
+  {'akinsho/git-conflict.nvim', version = "*", config = true}
 }
