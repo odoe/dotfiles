@@ -4,20 +4,26 @@
 -- See the kickstart.nvim README for more information
 
 return {
-    { "nvim-treesitter/nvim-treesitter-context" },
-    { "voldikss/vim-floaterm" },
-    {
-      "nvim-tree/nvim-web-devicons",
-      config = function()
-        require("nvim-web-devicons").setup({
-          color_icons = true,
-          -- globally enable default icons (default to false)
-          -- will get overriden by `get_icons` option
-          default = true,
-        })
-      end,
-    },
-    { "mbbill/undotree" },
-    { "editorconfig/editorconfig-vim" },
-    {'akinsho/git-conflict.nvim', version = "*", config = true}
+  { "nvim-treesitter/nvim-treesitter-context" },
+  { "voldikss/vim-floaterm" },
+  {
+    "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup({
+        color_icons = true,
+        -- globally enable default icons (default to false)
+        -- will get overriden by `get_icons` option
+        default = true,
+      })
+    end,
+  },
+  { "mbbill/undotree" },
+  {
+    "theprimeagen/harpoon",
+    config = function()
+      require("custom.config.harpoon")
+    end,
+  },
+  { "editorconfig/editorconfig-vim" },
+  { 'akinsho/git-conflict.nvim',    version = "*", config = true }
 }
