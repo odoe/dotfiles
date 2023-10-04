@@ -18,13 +18,7 @@ return {
     end,
   },
   { 'mbbill/undotree' },
-  {
-    { 'windwp/nvim-autopairs' },
-    'theprimeagen/harpoon',
-    config = function()
-      require 'custom.config.harpoon'
-    end,
-  },
+  { 'windwp/nvim-autopairs' },
   { 'editorconfig/editorconfig-vim' },
   { 'akinsho/git-conflict.nvim',    version = '*', config = true },
 }
