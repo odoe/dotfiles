@@ -129,15 +129,23 @@ require('lazy').setup({
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
+          if vim.wo.diff then
+            return ']c'
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
           return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
         vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
+          if vim.wo.diff then
+            return '[c'
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
           return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
+        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
     },
   },
@@ -171,7 +179,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    main = "ibl",
+    main = 'ibl',
     opts = {},
   },
 
@@ -438,7 +446,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register({
+require('which-key').register {
   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
@@ -446,7 +454,7 @@ require('which-key').register({
   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-})
+}
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -494,7 +502,7 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
     }
-  end
+  end,
 }
 
 -- [[ Configure nvim-cmp ]]
@@ -540,7 +548,7 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = "copilot", group_index = 2 },
+    { name = 'copilot', group_index = 2 },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
@@ -551,34 +559,34 @@ cmp.setup {
 
 -- Better Treeseitter folds
 local o = vim.o
-o.foldexpr = "nvim_treesitter#foldexpr()"
-o.foldmethod = "expr"
+o.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldmethod = 'expr'
 o.foldlevel = 99
 function _G.custom_fold_text()
   local line = vim.fn.getline(vim.v.foldstart)
   local line_count = vim.v.foldend - vim.v.foldstart + 1
-  return "+" .. line .. ": " .. line_count .. " lines"
+  return '+' .. line .. ': ' .. line_count .. ' lines'
 end
 
-o.foldtext = "v:lua.custom_fold_text()"
+o.foldtext = 'v:lua.custom_fold_text()'
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
 local function lsp_organize_imports()
-  local params = { command = "_typescript.organizeImports", arguments = { vim.api.nvim_buf_get_name(0) }, title = "" }
+  local params = { command = '_typescript.organizeImports', arguments = { vim.api.nvim_buf_get_name(0) }, title = '' }
   vim.lsp.buf.execute_command(params)
 end
 
 _G.lsp_organize_imports = lsp_organize_imports
 
-require("conform").setup({
+require('conform').setup {
   format_on_save = {
     -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },
-})
+}
 
 -- keymaps
 local opts = { noremap = true, silent = true }
@@ -639,13 +647,14 @@ vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
 
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
+vim.wo.relativenumber = true
 
 -- options
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -654,9 +663,9 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+vim.opt.signcolumn = 'yes'
+vim.opt.isfname:append '@-@'
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = '80'
