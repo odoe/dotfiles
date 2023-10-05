@@ -565,6 +565,13 @@ o.foldtext = "v:lua.custom_fold_text()"
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+local function lsp_organize_imports()
+  local params = { command = "_typescript.organizeImports", arguments = { vim.api.nvim_buf_get_name(0) }, title = "" }
+  vim.lsp.buf.execute_command(params)
+end
+
+_G.lsp_organize_imports = lsp_organize_imports
+
 require("conform").setup({
   format_on_save = {
     -- These options will be passed to conform.format()
@@ -574,11 +581,6 @@ require("conform").setup({
 })
 
 -- keymaps
-local opts = { noremap = true, silent = true }
-
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
 local opts = { noremap = true, silent = true }
 
 -- vim.g.mapleader = " "
