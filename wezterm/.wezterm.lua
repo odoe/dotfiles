@@ -18,9 +18,27 @@ config.font_size = 12.0
 -- For example, changing the color scheme:
 config.color_scheme = "Hardcore"
 
-config.window_background_opacity = 0.95
-
 config.enable_tab_bar = false
+
+wezterm.on("toggle-opacity", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.window_background_opacity then
+		overrides.window_background_opacity = 0.95
+	else
+		overrides.window_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
+end)
+
+-- config.window_background_opacity = 0.95
+
+config.keys = {
+	{
+		key = "B",
+		mods = "CTRL",
+		action = wezterm.action.EmitEvent("toggle-opacity"),
+	},
+}
 
 -- and finally, return the configuration to wezterm
 return config
