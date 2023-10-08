@@ -21,4 +21,5 @@ return {
   { 'windwp/nvim-autopairs' },
   { 'editorconfig/editorconfig-vim' },
   { 'akinsho/git-conflict.nvim',    version = '*', config = true },
+  { 'pantharshit00/vim-prisma' },
 }
