@@ -16,7 +16,7 @@ config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 12.0
 
 -- For example, changing the color scheme:
-config.color_scheme = "Hardcore"
+config.color_scheme = "Catppuccin Mocha"
 
 config.enable_tab_bar = false
 
