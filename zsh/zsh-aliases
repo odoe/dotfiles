@@ -5,3 +5,4 @@ alias fd=fdfind
 alias vim=nvim
 alias nv=nvim
 alias rr=ranger
+alias art='php artisan'

@@ -22,4 +22,12 @@ return {
   { 'editorconfig/editorconfig-vim' },
   { 'akinsho/git-conflict.nvim',    version = '*', config = true },
   { 'pantharshit00/vim-prisma' },
+  -- Syntax and indent files
+  -- loading this on ft because that seems to work better for some reason
+  -- otherwise indents for example only work after set ft=blade
+  -- blade
+  {
+    'jwalton512/vim-blade',
+    ft = 'blade',
+  },
 }
