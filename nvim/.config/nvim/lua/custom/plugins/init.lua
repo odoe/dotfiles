@@ -22,6 +22,8 @@ return {
   { 'editorconfig/editorconfig-vim' },
   { 'akinsho/git-conflict.nvim',    version = '*', config = true },
   { 'pantharshit00/vim-prisma' },
+  -- Add, change, and delete surrounding text.
+  { 'tpope/vim-surround' },
   -- Syntax and indent files
   -- loading this on ft because that seems to work better for some reason
   -- otherwise indents for example only work after set ft=blade
