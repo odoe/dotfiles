@@ -1,3 +1,6 @@
+# wait 1 second for command timeout
+command_timeout = 1000
+
 [aws]
 symbol = "  "
 disabled = true

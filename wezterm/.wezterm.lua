@@ -13,7 +13,7 @@ end
 -- This is where you actually apply your config choices
 
 config.font = wezterm.font("Hack Nerd Font")
-config.font_size = 12.0
+config.font_size = 14.0
 
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha"
