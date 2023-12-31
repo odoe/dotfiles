@@ -103,7 +103,7 @@ require('lazy').setup({
         -- follow latest release.
         version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
-        build = 'make install_jsregexp'
+        build = 'make install_jsregexp',
       },
       'saadparwaiz1/cmp_luasnip',
 
@@ -220,6 +220,14 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    config = function()
+      local config = require 'nvim-treesitter.configs'
+      config.setup {
+        auto_install = true,
+        highlight = { enable = true },
+        indent = { enable = true },
+      }
+    end,
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -338,8 +346,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'php', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc',
-    'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'php', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
