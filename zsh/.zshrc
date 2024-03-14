@@ -168,8 +168,8 @@ export NVM_DIR="$HOME/.nvm"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
 
 # rbenv
 # eval "$(rbenv init -)"
@@ -230,3 +230,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 eval "$(starship init zsh)"
+
+# fnm
+export PATH="$HOME/.fnm:$PATH"
+eval "`fnm env`"
