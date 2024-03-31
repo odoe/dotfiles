@@ -119,14 +119,10 @@ source $HOME/zsh-prompt
 
 if [[ $OSTYPE == 'darwin'* ]]; then
 # some more ls aliases
-  export PATH="$HOME/Library/Python/3.8/bin:$PATH"
+  # export PATH="$HOME/Library/Python/3.8/bin:$PATH"
   export PATH="$HOME/opt/anaconda3/bin:$PATH"
   export PATH="$HOME/nvim-macos/bin:$PATH"
   export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
-  # Herd injected PHP 8.3 configuration.
-  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
-  # Herd injected PHP binary.
-  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
 else
   export PATH="$HOME/nvim-linux64/bin:$PATH"
 fi
@@ -193,6 +189,9 @@ then
   export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
   # Herd injected PHP 8.3 configuration.
   export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
+
+  # Herd injected PHP 8.3 configuration.
+  export HERD_PHP_83_INI_SCAN_DIR="/Users/rene8209/Library/Application Support/Herd/config/php/83/"
 else
   # pnpm
   export PNPM_HOME="~/.local/share/pnpm"
@@ -271,12 +270,3 @@ then
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 fi
-
-
-
-# Herd injected PHP 8.3 configuration.
-export HERD_PHP_83_INI_SCAN_DIR="/Users/rene8209/Library/Application Support/Herd/config/php/83/"
-
-
-# Herd injected PHP binary.
-export PATH="/Users/rene8209/Library/Application Support/Herd/bin/":$PATH
