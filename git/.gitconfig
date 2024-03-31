@@ -1,9 +1,11 @@
 # gitconfig
-[user]
-	name = odoe
-	email = odoe@odoe.net
-[github]
-	user = odoe
+[include]
+    path = ~/git-work.conf
+[includeIf "gitdir:~/dev/personal/"]
+    path = ~/git-personal.conf
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ~/git-personal.conf
+
 [alias]
     # list all aliases
     la = "!git config -l | grep alias | cut -c 7-"
