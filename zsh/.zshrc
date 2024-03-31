@@ -182,9 +182,13 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 if [[ $OSTYPE == 'darwin'* ]];
 then
   # pnpm
-  export PNPM_HOME="/Users/rene8209/Library/pnpm"
+  export PNPM_HOME="$HOME/Library/pnpm"
   export PATH="$PNPM_HOME:$PATH"
   # pnpm end
+  # Herd injected PHP binary.
+  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
+  # Herd injected PHP 8.3 configuration.
+  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
 else
   # pnpm
   export PNPM_HOME="~/.local/share/pnpm"
@@ -235,3 +239,5 @@ eval "$(starship init zsh)"
 # fnm
 export PATH="$HOME/.fnm:$PATH"
 eval "`fnm env`"
+
+
