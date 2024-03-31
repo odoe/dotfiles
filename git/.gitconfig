@@ -1,6 +1,10 @@
 # gitconfig
-[include]
+# OS-specific includes
+[includeIf "gitdir:/Users"]
     path = ~/git-work.conf
+[includeIf "gitdir:/home"]
+    path = ~/git-personal.conf
+# Work-and-Personal-specific includes
 [includeIf "gitdir:~/dev/personal/"]
     path = ~/git-personal.conf
 [includeIf "gitdir:~/.dotfiles/"]
