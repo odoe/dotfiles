@@ -122,7 +122,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export PATH="$HOME/Library/Python/3.8/bin:$PATH"
   export PATH="$HOME/opt/anaconda3/bin:$PATH"
   export PATH="$HOME/nvim-macos/bin:$PATH"
-  export PATH="$HOME/nvim-macos_arch64/bin:$PATH"
+  export PATH="$HOME/nvim-macos_arm64/bin:$PATH"
 else
   export PATH="$HOME/nvim-linux64/bin:$PATH"
 fi
