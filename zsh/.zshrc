@@ -169,8 +169,8 @@ export NVM_DIR="$HOME/.nvm"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# export VOLTA_HOME="$HOME/.volta"
-# export PATH="$VOLTA_HOME/bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # rbenv
 # eval "$(rbenv init -)"
