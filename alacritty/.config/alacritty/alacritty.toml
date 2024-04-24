@@ -18,3 +18,4 @@ family = "Hack Nerd Font"
 
 [window]
 opacity = 1.0
+padding = { x = 5, y = 5 }
