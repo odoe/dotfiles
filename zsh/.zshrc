@@ -123,6 +123,10 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export PATH="$HOME/opt/anaconda3/bin:$PATH"
   export PATH="$HOME/nvim-macos/bin:$PATH"
   export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
+  # Herd injected PHP 8.3 configuration.
+  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
+  # Herd injected PHP binary.
+  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
 else
   export PATH="$HOME/nvim-linux64/bin:$PATH"
 fi
