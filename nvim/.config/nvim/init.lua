@@ -424,6 +424,11 @@ require('lazy').setup({
       -- used for completion, annotations and signatures of Neovim apis
       { 'folke/neodev.nvim', opts = {} },
     },
+    opts = {
+      diagnostics = {
+        virtual_text = false,
+      },
+    },
     config = function()
       -- Brief aside: **What is LSP?**
       --
@@ -573,7 +578,8 @@ require('lazy').setup({
         prismals = {},
         html = { filetypes = { 'html', 'twig', 'hbs', 'blade' } },
         volar = {
-          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+          filetypes = { 'vue' },
+          -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
           init_options = {
             vue = {
               hybridMode = false,
