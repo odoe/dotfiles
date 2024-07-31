@@ -240,9 +240,23 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 eval "$(starship init zsh)"
 
-# fnm
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
+if [[ $OSTYPE == 'darwin'* ]];
+then
   eval "`fnm env`"
+else
+  # fnm
+  FNM_PATH="$HOME/.local/share/fnm"
+  if [ -d "$FNM_PATH" ]; then
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "`fnm env`"
+  fi
+fi
+
+
+if [[ $OSTYPE == 'darwin'* ]];
+then
+  # Herd injected PHP binary.
+  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
+  # Herd injected PHP 8.3 configuration.
+  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
 fi
