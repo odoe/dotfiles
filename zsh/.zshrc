@@ -259,4 +259,9 @@ then
   export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
   # Herd injected PHP 8.3 configuration.
   export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
+
+  # Java via Homebrew
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 fi
+
