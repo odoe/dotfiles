@@ -136,9 +136,9 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+# laravel
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+  export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
 # DOTNET
@@ -255,11 +255,6 @@ fi
 
 if [[ $OSTYPE == 'darwin'* ]];
 then
-  # Herd injected PHP binary.
-  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
-  # Herd injected PHP 8.3 configuration.
-  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
-
   # Java via Homebrew
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
