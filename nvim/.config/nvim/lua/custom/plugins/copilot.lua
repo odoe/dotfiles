@@ -1,9 +1,9 @@
 return {
-  {
-    'github/copilot.vim',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  -- },
   -- {
   --   'zbirenbaum/copilot.lua',
   --   cmd = 'Copilot',

@@ -231,6 +231,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  'github/copilot.vim',
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -546,7 +547,7 @@ require('lazy').setup({
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-                   -- Opens a popup that displays documentation about the word under your cursor
+          -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
@@ -994,7 +995,7 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
- 
+
 -- Better Treeseitter folds
 local o = vim.o
 o.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -1107,3 +1108,4 @@ vim.opt.isfname:append '@-@'
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = '80'
+

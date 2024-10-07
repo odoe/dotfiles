@@ -156,7 +156,7 @@ case "$OSTYPE" in
 esac
 
 export PATH="$HOME/.cargo/bin:$PATH"
-# export PATH=$PATH:'~/.local/bin':$PATH
+export PATH="$HOME/.local/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH='/usr/local/go/bin':$PATH
@@ -260,3 +260,11 @@ then
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 fi
 
+
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/rene8209/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/rene8209/Library/Application Support/Herd/bin/":$PATH
