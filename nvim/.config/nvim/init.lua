@@ -852,7 +852,8 @@ require('lazy').setup({
     config = function()
       -- vim.cmd.colorscheme 'catppuccin'
       require('catppuccin').setup {
-        flavour = 'latte', -- latte, frappe, macchiato, mocha
+        -- flavour = 'latte', -- latte, frappe, macchiato, mocha
+        flavour = 'mocha', -- latte, frappe, macchiato, mocha
         background = { -- :h background
           light = 'latte',
           dark = 'mocha',
@@ -1108,4 +1109,3 @@ vim.opt.isfname:append '@-@'
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = '80'
-
