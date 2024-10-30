@@ -214,6 +214,8 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="fd --type f"
 export FZF_ALT_C_COMMAND="fd --type f"
 
+source <(fzf --zsh)
+
 [ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
 
 # Bindings
@@ -230,6 +232,16 @@ if [ $LIVE_COUNTER -eq 2 ]; then
       fi
     fi
 fi
+
+# yazi shell wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
