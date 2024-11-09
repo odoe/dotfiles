@@ -214,7 +214,7 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="fd --type f"
 export FZF_ALT_C_COMMAND="fd --type f"
 
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
 [ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
 
