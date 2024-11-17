@@ -25,6 +25,8 @@ config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
 
+config.max_fps = 120
+
 wezterm.on("toggle-opacity", function(window)
 	local overrides = window:get_config_overrides() or {}
 	if not overrides.window_background_opacity then
