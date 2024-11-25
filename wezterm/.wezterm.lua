@@ -23,7 +23,7 @@ config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "Catppuccin Latte"
 
 config.enable_tab_bar = false
-config.use_fancy_tab_bar = false
+-- config.use_fancy_tab_bar = false
 
 config.max_fps = 120
 

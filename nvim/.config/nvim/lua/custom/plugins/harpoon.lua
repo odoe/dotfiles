@@ -1,6 +1,7 @@
 return {
-    'theprimeagen/harpoon',
-    config = function()
-        require 'custom.config.harpoon'
-    end,
+  'theprimeagen/harpoon',
+  branch = 'harpoon2',
+  config = function()
+    require 'custom.config.harpoon'
+  end,
 }
