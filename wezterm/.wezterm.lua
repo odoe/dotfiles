@@ -14,7 +14,7 @@ end
 
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Hack Nerd Font Mono")
 -- config.font_size = 14.0
 config.font_size = 16.0
 
