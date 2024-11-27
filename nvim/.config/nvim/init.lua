@@ -391,7 +391,7 @@ require('lazy').setup({
           -- mappings = {
           --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
           -- },
-          layout_strategy = "horizontal",
+          layout_strategy = 'horizontal',
           layout_config = {
             width = 0.95,
             horizontal = {
@@ -400,7 +400,7 @@ require('lazy').setup({
           },
         },
         pickers = {
-          git_branches= {
+          git_branches = {
             theme = 'dropdown',
             winblend = 10,
             results_height = 20,
@@ -701,7 +701,7 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
+    event = { 'BufWritePre', 'BufNewFile' },
     cmd = { 'ConformInfo' },
     keys = {
       {
@@ -762,12 +762,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -1042,22 +1042,18 @@ require('conform').setup {
   },
 }
 
-local _border = "single"
+local _border = 'single'
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = _border
-  }
-)
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = _border,
+})
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = _border
-  }
-)
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = _border,
+})
 
-vim.diagnostic.config{
-  float={border=_border}
+vim.diagnostic.config {
+  float = { border = _border },
 }
 
 -- keymaps
