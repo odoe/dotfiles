@@ -6,17 +6,17 @@
 return {
   { 'nvim-treesitter/nvim-treesitter-context' },
   { 'voldikss/vim-floaterm' },
-  {
-    'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('nvim-web-devicons').setup {
-        color_icons = true,
-        -- globally enable default icons (default to false)
-        -- will get overriden by `get_icons` option
-        default = true,
-      }
-    end,
-  },
+  -- {
+  --   'nvim-tree/nvim-web-devicons',
+  --   config = function()
+  --     require('nvim-web-devicons').setup {
+  --       color_icons = true,
+  --       -- globally enable default icons (default to false)
+  --       -- will get overriden by `get_icons` option
+  --       default = true,
+  --     }
+  --   end,
+  -- },
   { 'mbbill/undotree' },
   { 'windwp/nvim-autopairs' },
   { 'editorconfig/editorconfig-vim' },
