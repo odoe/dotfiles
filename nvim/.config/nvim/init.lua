@@ -1056,6 +1056,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 vim.diagnostic.config {
+  virtual_text = false,
   float = { border = _border },
   signs = {
     text = {
