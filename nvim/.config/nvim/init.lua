@@ -1119,7 +1119,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-l>', '<C-l>h', opts)
 
 -- Floaterm
-vim.keymap.set('n', '<leader>gg', '<cmd>FloatermNew lazygit<CR>')
+-- vim.keymap.set('n', '<leader>gg', '<cmd>FloatermNew lazygit<CR>')
 vim.keymap.set('n', '<leader>ft', '<cmd>FloatermNew<CR>')
 
 -- Fugitive
