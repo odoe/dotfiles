@@ -122,6 +122,13 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export PATH="$HOME/Library/Python/3.8/bin:$PATH"
   export PATH="$HOME/opt/anaconda3/bin:$PATH"
   export PATH="$HOME/nvim-macos/bin:$PATH"
+  export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
+  # Herd injected PHP 8.3 configuration.
+  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
+  # Herd injected PHP binary.
+  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
+else
+  export PATH="$HOME/nvim-linux64/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
@@ -129,9 +136,9 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+# laravel
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+  export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
 
 # DOTNET
@@ -149,7 +156,7 @@ case "$OSTYPE" in
 esac
 
 export PATH="$HOME/.cargo/bin:$PATH"
-# export PATH=$PATH:'~/.local/bin':$PATH
+export PATH="$HOME/.local/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH='/usr/local/go/bin':$PATH
@@ -179,9 +186,13 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 if [[ $OSTYPE == 'darwin'* ]];
 then
   # pnpm
-  export PNPM_HOME="/Users/rene8209/Library/pnpm"
+  export PNPM_HOME="$HOME/Library/pnpm"
   export PATH="$PNPM_HOME:$PATH"
   # pnpm end
+  # Herd injected PHP binary.
+  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
+  # Herd injected PHP 8.3 configuration.
+  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
 else
   # pnpm
   export PNPM_HOME="~/.local/share/pnpm"
@@ -203,6 +214,8 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="fd --type f"
 export FZF_ALT_C_COMMAND="fd --type f"
 
+# source <(fzf --zsh)
+
 [ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
 
 # Bindings
@@ -219,3 +232,51 @@ if [ $LIVE_COUNTER -eq 2 ]; then
       fi
     fi
 fi
+
+# yazi shell wrapper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(starship init zsh)"
+
+if [[ $OSTYPE == 'darwin'* ]];
+then
+  eval "`fnm env`"
+else
+  # fnm
+  FNM_PATH="$HOME/.local/share/fnm"
+  if [ -d "$FNM_PATH" ]; then
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "`fnm env`"
+  fi
+fi
+
+
+if [[ $OSTYPE == 'darwin'* ]];
+then
+  # Java via Homebrew
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+fi
+
+
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/rene8209/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/rene8209/Library/Application Support/Herd/bin/":$PATH
