@@ -1,25 +1,3 @@
--- local mark = require 'harpoon.mark'
--- local ui = require 'harpoon.ui'
---
--- vim.keymap.set('n', '<C-a>', mark.add_file)
--- vim.keymap.set('n', '<C-e>', ui.toggle_quick_menu)
---
--- vim.keymap.set('n', '<C-h>', function()
---   ui.nav_file(1)
--- end)
--- vim.keymap.set('n', '<C-j>', function()
---   ui.nav_file(2)
--- end)
--- vim.keymap.set('n', '<C-k>', function()
---   ui.nav_file(3)
--- end)
--- vim.keymap.set('n', '<C-l>', function()
---   ui.nav_file(4)
--- end)
---
--- vim.keymap.set('n', '<C-t>', function()
---   ui.nav_prev()
--- end)
 local harpoon = require 'harpoon'
 
 -- REQUIRED
@@ -52,9 +30,9 @@ end, { desc = 'Open harpoon window' })
 vim.keymap.set('n', '<C-a>', function()
   harpoon:list():add()
 end)
--- vim.keymap.set('n', '<C-e>', function()
---   harpoon.ui:toggle_quick_menu(harpoon:list())
--- end)
+vim.keymap.set('n', '<C-q>', function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
 
 vim.keymap.set('n', '<C-h>', function()
   harpoon:list():select(1)
@@ -70,9 +48,9 @@ vim.keymap.set('n', '<C-s>', function()
 end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set('n', '<C-S-P>', function()
+vim.keymap.set('n', '<C-j>', function()
   harpoon:list():prev()
 end)
-vim.keymap.set('n', '<C-S-N>', function()
+vim.keymap.set('n', '<C-k>', function()
   harpoon:list():next()
 end)

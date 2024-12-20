@@ -5,9 +5,16 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
-      -- lint.linters_by_ft = {
-      --   markdown = { 'markdownlint' },
-      -- }
+      lint.linters_by_ft = {
+        markdown = { 'markdownlint' },
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
+        svelte = { 'eslint_d' },
+        vue = { 'eslint_d' },
+        json = { 'jsonlint' },
+      }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
@@ -21,7 +28,7 @@ return {
       --   dockerfile = { "hadolint" },
       --   inko = { "inko" },
       --   janet = { "janet" },
-        -- json = { "jsonlint" },
+      -- json = { "jsonlint" },
       --   markdown = { "vale" },
       --   rst = { "vale" },
       --   ruby = { "ruby" },
@@ -44,7 +51,7 @@ return {
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
           lint.try_lint()
