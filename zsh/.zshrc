@@ -225,9 +225,9 @@ bindkey -s ^f "tmux-sessionizer\n"
 # Only show neofetch in first terminal instance
 LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
 if [ $LIVE_COUNTER -eq 2 ]; then
-    if ! type "$neofetch" &> /dev/null; then
+    if ! type "$fastfetch" &> /dev/null; then
       if ! type "$lolcat" &> /dev/null; then
-        neofetch | lolcat
+        fastfetch | lolcat
       fi
     fi
 fi
