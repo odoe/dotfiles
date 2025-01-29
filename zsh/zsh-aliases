@@ -24,6 +24,8 @@ alias lS='eza -1 --color=always --group-directories-first --icons'
 alias lt='eza --tree --level=2 --color=always --group-directories-first --icons'
 alias l.="eza -a | grep -E '^\.'"
 
+alias delnpm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+
 alias fd=fdfind
 alias vim=nvim
 alias nv=nvim
