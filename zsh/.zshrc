@@ -186,12 +186,8 @@ then
   export PATH="$PNPM_HOME:$PATH"
   # pnpm end
   # Herd injected PHP binary.
-  export PATH="$HOME/Library/Application Support/Herd/bin/":$PATH
-  # Herd injected PHP 8.3 configuration.
-  export HERD_PHP_83_INI_SCAN_DIR="$HOME/Library/Application Support/Herd/config/php/83/"
-
-  # Herd injected PHP 8.3 configuration.
-  export HERD_PHP_83_INI_SCAN_DIR="/Users/rene8209/Library/Application Support/Herd/config/php/83/"
+  export PATH="$HOME/.config/herd-lite/bin/":$PATH
+  export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 else
   # pnpm
   export PNPM_HOME="~/.local/share/pnpm"

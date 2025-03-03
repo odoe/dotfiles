@@ -4,10 +4,11 @@
 # font-style-bold = 'Bold'
 # font-style-italic = 'Light Italic'
 # font-style-bold-italic = 'Bold Italic'
-font-size = 12.0
+font-size = 16.0
 # cell-height = 1.2
 
-theme = catppuccin-mocha
+theme = catppuccin-latte
+# theme = catppuccin-mocha
 
 gtk-titlebar = false
 

@@ -875,6 +875,7 @@ require('lazy').setup({
         },
       }
       vim.cmd.colorscheme 'catppuccin'
+      vim.o.background = 'light'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
