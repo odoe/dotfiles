@@ -7,8 +7,8 @@
 font-size = 16.0
 # cell-height = 1.2
 
-theme = catppuccin-latte
-# theme = catppuccin-mocha
+# theme = catppuccin-latte
+theme = catppuccin-mocha
 
 gtk-titlebar = false
 
