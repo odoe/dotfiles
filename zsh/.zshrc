@@ -225,6 +225,8 @@ if [ $LIVE_COUNTER -eq 2 ]; then
       if ! type "$lolcat" &> /dev/null; then
         fastfetch | lolcat
       fi
+    else
+    	fastfetch
     fi
 fi
 
