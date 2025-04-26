@@ -253,6 +253,8 @@ if [[ $OSTYPE == 'darwin'* ]];
 then
   eval "`fnm env`"
 else
+  # zen browser
+  export PATH="$HOME/zen:$PATH"
   # fnm
   FNM_PATH="$HOME/.local/share/fnm"
   if [ -d "$FNM_PATH" ]; then
@@ -267,4 +269,11 @@ then
   # Java via Homebrew
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+fi
+
+# fnm
+FNM_PATH="/home/odoe/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/odoe/.local/share/fnm:$PATH"
+  eval "`fnm env`"
 fi
