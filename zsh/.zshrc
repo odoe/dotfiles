@@ -124,7 +124,7 @@ if [[ $OSTYPE == 'darwin'* ]]; then
   export PATH="$HOME/nvim-macos/bin:$PATH"
   export PATH="$HOME/nvim-macos-arm64/bin:$PATH"
 else
-  export PATH="$HOME/nvim-linux64/bin:$PATH"
+  export PATH="$HOME/nvim-linux-x86_64/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
