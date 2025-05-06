@@ -13,7 +13,13 @@ return {
       enabled = true,
       timeout = 5000,
     },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+    },
+    -- explorer = {
+    --   replace_netrw = true,
+    --   auto_close = true,
+    -- },
     quickfile = { enabled = true },
     scope = { enabled = true },
     -- scroll = { enabled = true },
@@ -23,7 +29,7 @@ return {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
       }
-    }
+    },
   },
   keys = {
     -- EXTRA_KEYS
@@ -42,6 +48,7 @@ return {
     { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
     { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    -- { '<C-x>', function() Snacks.explorer.reveal() end },
     {
       "<leader>N",
       desc = "Neovim News",
