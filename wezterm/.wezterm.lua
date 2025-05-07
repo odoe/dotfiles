@@ -43,7 +43,7 @@ wezterm.on("toggle-opacity", function(window)
 	window:set_config_overrides(overrides)
 end)
 
-config.window_decorations = "RESIZE"
+-- config.window_decorations = "RESIZE"
 -- config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 
 config.window_padding = {
