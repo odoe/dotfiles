@@ -15,9 +15,11 @@ end
 -- Fonts
 
 -- config.font = wezterm.font("Hack Nerd Font Mono")
-config.font = wezterm.font("DankMono Nerd Font Mono")
--- config.font_size = 14.0
-config.font_size = 16.0
+-- config.font = wezterm.font("DankMono Nerd Font Mono")
+config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
+-- config.font = wezterm.font("OperatorMonoLig Nerd Font Mono")
+config.font_size = 14.0
+-- config.font_size = 18.0
 config.line_height = 1.2
 
 -- Colors
