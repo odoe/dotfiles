@@ -641,15 +641,15 @@ require('lazy').setup({
         -- tsserver = {},
         prismals = {},
         html = { filetypes = { 'html', 'twig', 'hbs', 'blade' } },
-        volar = {
-          filetypes = { 'vue' },
-          -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-          init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          },
-        },
+        -- volar = {
+        --   filetypes = { 'vue' },
+        --   -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        --   init_options = {
+        --     vue = {
+        --       hybridMode = false,
+        --     },
+        --   },
+        -- },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
