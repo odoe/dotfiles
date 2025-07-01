@@ -18,7 +18,7 @@ return {
     'nvim-neotest/nvim-nio',
 
     -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
@@ -26,9 +26,62 @@ return {
     'mxsdev/nvim-dap-vscode-js',
     {
       'microsoft/vscode-js-debug',
-        opt = true,
-        run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out'
+      opt = true,
+      run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out'
     }
+  },
+  keys = {
+    -- Basic debugging keymaps, feel free to change to your liking!
+    {
+      '<F5>',
+      function()
+        require('dap').continue()
+      end,
+      desc = 'Debug: Start/Continue',
+    },
+    {
+      '<F1>',
+      function()
+        require('dap').step_into()
+      end,
+      desc = 'Debug: Step Into',
+    },
+    {
+      '<F2>',
+      function()
+        require('dap').step_over()
+      end,
+      desc = 'Debug: Step Over',
+    },
+    {
+      '<F3>',
+      function()
+        require('dap').step_out()
+      end,
+      desc = 'Debug: Step Out',
+    },
+    {
+      '<leader>b',
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = 'Debug: Toggle Breakpoint',
+    },
+    {
+      '<leader>B',
+      function()
+        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = 'Debug: Set Breakpoint',
+    },
+    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+    {
+      '<F7>',
+      function()
+        require('dapui').toggle()
+      end,
+      desc = 'Debug: See last session result.',
+    },
   },
   config = function()
     local dap = require 'dap'
@@ -50,94 +103,6 @@ return {
         'delve',
       },
     }
-
-    -- JavaScript/TypeScript/Node
-
-    -- setup adapters
-require('dap-vscode-js').setup({
-  debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
-  debugger_cmd = { 'js-debug-adapter' },
-  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
-})
-
--- custom adapter for running tasks before starting debug
-local custom_adapter = 'pwa-node-custom'
-dap.adapters[custom_adapter] = function(cb, config)
-  if config.preLaunchTask then
-      local async = require('plenary.async')
-      local notify = require('notify').async
-
-      async.run(function()
-          ---@diagnostic disable-next-line: missing-parameter
-          notify('Running [' .. config.preLaunchTask .. ']').events.close()
-      end, function()
-          vim.fn.system(config.preLaunchTask)
-          config.type = 'pwa-node'
-          dap.run(config)
-      end)
-  end
-end
-
--- language config
-for _, language in ipairs({ 'typescript', 'typescriptreact', 'javascript', 'svelte', 'vue' }) do
-  dap.configurations[language] = {
-      {
-          name = 'Launch',
-          type = 'pwa-node',
-          request = 'launch',
-          program = '${file}',
-          rootPath = '${workspaceFolder}',
-          cwd = '${workspaceFolder}',
-          sourceMaps = true,
-          skipFiles = { '<node_internals>/**' },
-          protocol = 'inspector',
-          console = 'integratedTerminal',
-      },
-      {
-          name = 'Attach to node process',
-          type = 'pwa-node',
-          request = 'attach',
-          rootPath = '${workspaceFolder}',
-          processId = require('dap.utils').pick_process,
-      },
-      {
-        -- use nvim-dap-vscode-js's pwa-chrome debug adapter
-        type = 'pwa-chrome',
-        request = 'attach',
-        -- processId = require 'dap.utils'.pick_process,
-        -- name of the debug action
-        name = 'Launch Chrome to debug client side code',
-        -- default vite dev server url
-        url = 'http://localhost:5173',
-        -- for TypeScript/Svelte
-        -- sourceMaps = true,
-        webRoot = '${workspaceFolder}/src',
-        -- protocol = 'inspector',
-        -- port = 9222,
-        -- skip files from vite's hmr
-        skipFiles = { '**/node_modules/**/*', '**/@vite/*', '**/src/client/*', '**/src/*' },
-      },
-      {
-        type = 'pwa-chrome',
-        reques = 'attach',
-        port = 9222,
-        name = 'Attach Chrome',
-        url = 'http://localhost:5173/',
-        webRoot = '${workspaceFolder}'
-      }
-  }
-end
-   
-
-    -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
-      dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -161,8 +126,17 @@ end
       },
     }
 
-    -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    -- Change breakpoint icons
+    -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+    -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    -- local breakpoint_icons = vim.g.have_nerd_font
+    --     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+    --   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+    -- for type, icon in pairs(breakpoint_icons) do
+    --   local tp = 'Dap' .. type
+    --   local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
+    --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+    -- end
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
