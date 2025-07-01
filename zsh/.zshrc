@@ -251,7 +251,7 @@ eval "$(starship init zsh)"
 
 if [[ $OSTYPE == 'darwin'* ]];
 then
-  eval "`fnm env`"
+  eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
 else
   # zen browser
   export PATH="$HOME/zen:$PATH"
@@ -259,7 +259,7 @@ else
   FNM_PATH="$HOME/.local/share/fnm"
   if [ -d "$FNM_PATH" ]; then
     export PATH="$HOME/.local/share/fnm:$PATH"
-    eval "`fnm env`"
+    eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
   fi
 fi
 
