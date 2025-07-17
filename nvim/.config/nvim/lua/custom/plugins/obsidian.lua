@@ -4,15 +4,16 @@ return {
     lazy = true,
     ft = 'markdown',
     dependencies = {
-        -- Required.
-        'nvim-lua/plenary.nvim',
+      -- Required.
+      'nvim-lua/plenary.nvim',
     },
     opts = {
-        workspaces = {
-            {
-                name = 'personal',
-                path = '~/notes',
-            },
+      workspaces = {
+        {
+          name = 'personal',
+          path = '~/notes_vault',
         },
+      },
     },
-}
+  }
+  

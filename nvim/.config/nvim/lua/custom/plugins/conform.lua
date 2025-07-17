@@ -1,13 +1,13 @@
 return {
   {
     'stevearc/conform.nvim',
-    dependencies = { 'mason.nvim' },
+    -- dependencies = { 'mason.nvim' },
     lazy = true,
     cmd = 'ConformInfo',
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        fish = { 'fish_indent' },
+        -- fish = { 'fish_indent' },
         sh = { 'shfmt' },
         php = { 'phpcbf' },
         blade = { 'blade-formatter', 'phpcbf', stop_after_first = true },
