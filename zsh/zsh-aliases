@@ -32,3 +32,4 @@ alias nv=nvim
 alias rr=ranger
 alias yz=yazi
 alias art='php artisan'
+alias ca=calcure
