@@ -14,16 +14,16 @@ end
 
 -- Fonts
 
-config.font = wezterm.font("Hack Nerd Font Mono")
+-- config.font = wezterm.font("Hack Nerd Font Mono")
 -- config.font = wezterm.font("DankMono Nerd Font Mono")
 -- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
--- config.font = wezterm.font("Iosevka Nerd Font Mono")
+config.font = wezterm.font("Iosevka Nerd Font Mono")
 -- config.font = wezterm.font("OperatorMonoLig Nerd Font Mono")
-config.font_size = 16.0
+config.font_size = 18.0
 -- config.font_size = 18.0
 config.line_height = 1.2
-config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
-config.allow_square_glyphs_to_overflow_width = "Never"
+-- config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
+-- config.allow_square_glyphs_to_overflow_width = "Never"
 
 -- Colors
 
