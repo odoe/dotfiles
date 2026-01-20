@@ -33,3 +33,10 @@ alias rr=ranger
 alias yz=yazi
 alias art='php artisan'
 alias ca=calcure
+
+## web components repo
+alias mapstart='pnpm map:start'
+alias mapbuild='pnpm map:build'
+alias mapstory='pnpm map:storybook'
+alias maptest='pnpm --filter=@arcgis/map-components test'
+alias hashupdate='pnpm --filter=@arcgis/map-components test-update-hashes'
