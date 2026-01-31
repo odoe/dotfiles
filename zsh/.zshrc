@@ -190,8 +190,11 @@ then
   export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 else
   # pnpm
-  export PNPM_HOME="~/.local/share/pnpm"
-  export PATH="$PNPM_HOME:$PATH"
+  export PNPM_HOME="/home/odoe/.local/share/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
   # pnpm end
 fi
 
@@ -277,3 +280,7 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/odoe/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+# opencode
+export PATH=/home/odoe/.opencode/bin:$PATH
+
