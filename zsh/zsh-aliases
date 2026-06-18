@@ -33,6 +33,7 @@ alias rr=ranger
 alias yz=yazi
 alias art='php artisan'
 alias ca=calcure
+alias gsub='git submodule update --init --recursive'
 
 ## web components repo
 alias mapstart='pnpm map:start'
