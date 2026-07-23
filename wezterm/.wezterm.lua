@@ -19,6 +19,7 @@ end
 -- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 -- config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.font = wezterm.font("0xProto")
+-- config.font = wezterm.font("0xProto Nerd Font Mono")
 -- config.font = wezterm.font("OperatorMonoLig Nerd Font Mono")
 config.font_size = 14.0
 -- config.font_size = 18.0
