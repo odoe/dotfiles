@@ -3,3 +3,4 @@ tmux/.tmux/plugins
 lazy-lock.json
 scripts/.local/share
 scripts/.local/state
+mpd/
