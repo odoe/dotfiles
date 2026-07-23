@@ -112,8 +112,8 @@ HISTCONTROL=ignoreboth
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $HOME/zsh-aliases
-source $HOME/zsh-prompt
+[ -f "$HOME/zsh-aliases" ] && source "$HOME/zsh-aliases"
+[ -f "$HOME/zsh-prompt" ] && source "$HOME/zsh-prompt"
 
 # Exports
 
@@ -214,7 +214,7 @@ export FZF_ALT_C_COMMAND="fd --type f"
 
 # source <(fzf --zsh)
 
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # Bindings
 bindkey -s ^f "tmux-sessionizer\n"
@@ -222,9 +222,9 @@ bindkey -s ^f "tmux-sessionizer\n"
 # Functions
 
 # Only show neofetch in first terminal instance
-LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l);
-if [ $LIVE_COUNTER -eq 2 ]; then
-    if ! type "$fastfetch" &> /dev/null; then
+LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty" | uniq | wc -l)
+if [[ -n "$LIVE_COUNTER" && "$LIVE_COUNTER" -eq 2 ]]; then
+    if ! command -v fastfetch &> /dev/null; then
       if ! type "$lolcat" &> /dev/null; then
         fastfetch | lolcat
       fi

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# -not -path "*/sgt/*" \
+# -not -path "*/sgt" \
 
 if [[ $# -eq 1 ]]; then
     selected=$1
@@ -7,8 +9,6 @@ else
         -mindepth 1 -maxdepth 3 \
         -type d \
         -not -path "*/node_modules/*" \
-        -not -path "*/sgt/*" \
-        -not -path "*/sgt" \
         -not -path "*/\.git/*" \
         2>/dev/null | fzf)
 fi
