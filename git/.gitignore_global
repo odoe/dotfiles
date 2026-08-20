@@ -26,3 +26,10 @@ tscommand*.txt
 # npm things
 npm-debug.log
 **/.claude/settings.local.json
+
+# copilot local instructions and agents
+.github/instructions/map-components-local-tests.instructions.md
+.github/agents/yann-bot.agent.md
+.github/prompts/map-components-widget-migration-agent.prompt.md
+.github/prompts/map-components-widget-migration-comparison.prompt.md
+.github/prompts/map-components-widget-migration-workflow.prompt.md
