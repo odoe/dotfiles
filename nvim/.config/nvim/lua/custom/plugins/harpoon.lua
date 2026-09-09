@@ -1,11 +1,7 @@
-return {
-  'theprimeagen/harpoon',
-  branch = 'harpoon2',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
-  },
-  config = function()
-    require 'custom.config.harpoon'
-  end,
+vim.pack.add {
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+  { src = 'https://github.com/theprimeagen/harpoon', version = 'harpoon2' },
 }
+
+require 'custom.config.harpoon'

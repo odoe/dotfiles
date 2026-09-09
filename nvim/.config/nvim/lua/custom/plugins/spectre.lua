@@ -1,5 +1,3 @@
-return {
-    'nvim-pack/nvim-spectre',
-    cmd = 'Spectre',
-    opts = { open_cmd = 'noswapfile vnew' },
-}
+vim.pack.add { 'https://github.com/nvim-pack/nvim-spectre' }
+
+require('spectre').setup { open_cmd = 'noswapfile vnew' }

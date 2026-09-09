@@ -1,13 +1,8 @@
-return {
-  'NeogitOrg/neogit',
-  dependencies = {
-    'nvim-lua/plenary.nvim', -- required
-    'sindrets/diffview.nvim', -- optional - Diff integration
-
-    -- Only one of these is needed.
-    'nvim-telescope/telescope.nvim', -- optional
-    -- "ibhagwan/fzf-lua",              -- optional
-    -- 'echasnovski/mini.pick', -- optional
-  },
-  config = true,
+vim.pack.add {
+  'https://github.com/nvim-lua/plenary.nvim', -- required
+  'https://github.com/sindrets/diffview.nvim', -- optional - Diff integration
+  'https://github.com/nvim-telescope/telescope.nvim', -- optional
+  'https://github.com/NeogitOrg/neogit',
 }
+
+require('neogit').setup {}

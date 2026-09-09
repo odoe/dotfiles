@@ -1,7 +1,3 @@
-return {
-    {
-        'kevinhwang91/nvim-bqf',
-        event = 'VeryLazy',
-        opts = {},
-    },
-}
+vim.pack.add { 'https://github.com/kevinhwang91/nvim-bqf' }
+
+require('bqf').setup {}

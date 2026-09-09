@@ -1,15 +1,11 @@
-return {
-  {
-    'stevearc/conform.nvim',
-    -- dependencies = { 'mason.nvim' },
-    lazy = true,
-    cmd = 'ConformInfo',
-    opts = {
-      formatters_by_ft = {
+vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
+
+local opts = {
+  formatters_by_ft = {
         lua = { 'stylua' },
         -- fish = { 'fish_indent' },
         sh = { 'shfmt' },
-        php = { 'phpcbf' },
+        php = { 'pint', 'php_cs_fixer', stop_after_first = true },
         blade = { 'blade-formatter', 'phpcbf', stop_after_first = true },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -29,24 +25,21 @@ return {
         handlebars = { 'prettierd', 'prettier', stop_after_first = true },
         -- php = { 'prettierd', 'prettier', stop_after_first = true } ,
         -- blade = { 'prettierd', 'prettier', stop_after_first = true } ,
-      },
-      -- ---@type table<string,table>
-      -- formatters = {
+  },
+  -- ---@type table<string,table>
+  -- formatters = {
       -- -- -- Example of using dprint only when a dprint.json file is present
       -- -- dprint = {
       -- --   condition = function(ctx)
       -- --     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
       -- --   end,
       -- -- },
-      -- },
-    },
-    config = function(_, opts)
-      opts.formatters = opts.formatters or {}
-      for f, o in pairs(opts.formatters) do
-        local ok, formatter = pcall(require, 'conform.formatters.' .. f)
-        opts.formatters[f] = vim.tbl_deep_extend('force', {}, ok and formatter or {}, o)
-      end
-      require('conform').setup(opts)
-    end,
-  },
+  -- },
 }
+
+opts.formatters = opts.formatters or {}
+for formatter_name, formatter_opts in pairs(opts.formatters) do
+  local ok, formatter = pcall(require, 'conform.formatters.' .. formatter_name)
+  opts.formatters[formatter_name] = vim.tbl_deep_extend('force', {}, ok and formatter or {}, formatter_opts)
+end
+require('conform').setup(opts)

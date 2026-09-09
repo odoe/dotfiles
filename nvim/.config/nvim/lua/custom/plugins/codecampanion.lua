@@ -1,46 +1,18 @@
-return {
-  'olimorris/codecompanion.nvim',
+vim.pack.add {
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/ravitemer/codecompanion-history.nvim',
+  'https://github.com/olimorris/codecompanion.nvim',
+}
+
+require('codecompanion').setup {
   opts = {
-    -- NOTE: The log_level is in `opts.opts`
-    opts = {
-      log_level = 'DEBUG', -- or "TRACE"
-    },
-  },
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
-    'ravitemer/codecompanion-history.nvim',
-  },
-  keys = {
-    {
-      '<leader>aa',
-      mode = { 'n', 'v' },
-      '<cmd>CodeCompanionChat Toggle<cr>',
-      desc = 'CodeCompanion Chat',
-    },
-    {
-      '<leader>aq',
-      ':CodeCompanion',
-      mode = { 'n', 'x', 'v' },
-      desc = 'CodeCompanion inline chat',
-    },
-    {
-      '<leader>AA',
-      '<cmd>CodeCompanionActions<cr>',
-      mode = { 'n', 'v' },
-      desc = 'CodeCompanion actions',
-    },
-    {
-      '<leader>an',
-      '<cmd>CodeCompanionChat<cr>',
-      mode = { 'n', 'v' },
-      desc = 'CodeCompanion new chat',
-    },
-    {
-      '<leader>av',
-      '<cmd>CodeCompanionChat Add<cr>',
-      mode = { 'n', 'v' },
-      desc = 'send visual selection to chat',
-    },
+    log_level = 'DEBUG', -- or "TRACE"
   },
 }
+
+vim.keymap.set({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'CodeCompanion Chat' })
+vim.keymap.set({ 'n', 'x', 'v' }, '<leader>aq', ':CodeCompanion', { desc = 'CodeCompanion inline chat' })
+vim.keymap.set({ 'n', 'v' }, '<leader>AA', '<cmd>CodeCompanionActions<cr>', { desc = 'CodeCompanion actions' })
+vim.keymap.set({ 'n', 'v' }, '<leader>an', '<cmd>CodeCompanionChat<cr>', { desc = 'CodeCompanion new chat' })
+vim.keymap.set({ 'n', 'v' }, '<leader>av', '<cmd>CodeCompanionChat Add<cr>', { desc = 'send visual selection to chat' })

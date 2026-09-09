@@ -3,33 +3,37 @@
 --
 -- See the kickstart.nvim README for more information
 
-return {
-  { 'nvim-treesitter/nvim-treesitter-context' },
-  { 'voldikss/vim-floaterm' },
-  -- {
-  --   'nvim-tree/nvim-web-devicons',
-  --   config = function()
-  --     require('nvim-web-devicons').setup {
-  --       color_icons = true,
-  --       -- globally enable default icons (default to false)
-  --       -- will get overriden by `get_icons` option
-  --       default = true,
-  --     }
-  --   end,
-  -- },
-  { 'mbbill/undotree' },
-  { 'windwp/nvim-autopairs' },
-  { 'editorconfig/editorconfig-vim' },
-  { 'akinsho/git-conflict.nvim',    version = '*', config = true },
-  { 'pantharshit00/vim-prisma' },
-  -- Add, change, and delete surrounding text.
-  -- { 'tpope/vim-surround' },
-  -- Syntax and indent files
-  -- loading this on ft because that seems to work better for some reason
-  -- otherwise indents for example only work after set ft=blade
-  -- blade
-  {
-    'jwalton512/vim-blade',
-    ft = 'blade',
-  },
+local modules = {
+  'snacks',
+  'bqf',
+  'cloak',
+  'fugitive',
+  'lualine',
+  'dropbar',
+  'netrw',
+  'neogit',
+  'harpoon',
+  'tailwindcss',
+  'ufo',
+  'markdown',
+  'obsidian',
+  'tiny-inline-diagnostics',
+  'conform',
+  'none-ls',
+  -- 'php',
+  -- 'phpactor',
+  -- 'phptools',
+  'laravel',
+  'pretty-ts-errors',
+  'claudecode',
+  'codecampanion',
+  'opencode',
+  'octo',
+  'copilot',
+  -- 'neorg',
+  'lsp-lines',
 }
+
+for _, module in ipairs(modules) do
+  require('custom.plugins.' .. module)
+end

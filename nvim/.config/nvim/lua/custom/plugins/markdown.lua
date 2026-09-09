@@ -1,31 +1,17 @@
-return {
-  -- {
-  --   'MeanderingProgrammer/render-markdown.nvim',
-  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-  --   ---@module 'render-markdown'
-  --   ---@type render.md.UserConfig
-  --   opts = {},
-  --   ft = { 'markdown' },
-  -- },
-  {
-    'OXY2DEV/markview.nvim',
-    lazy = false,
+vim.api.nvim_create_autocmd('PackChanged', {
+  group = vim.api.nvim_create_augroup('custom-markdown-preview-build', { clear = true }),
+  callback = function(event)
+    if event.data.spec.name ~= 'markdown-preview.nvim' or (event.data.kind ~= 'install' and event.data.kind ~= 'update') then return end
+    vim.system({ 'yarn', 'install' }, { cwd = event.data.path .. '/app' }, function(result)
+      if result.code ~= 0 then vim.notify('markdown-preview build failed:\n' .. (result.stderr or result.stdout), vim.log.levels.ERROR) end
+    end)
+  end,
+})
 
-    -- For blink.cmp's completion
-    -- source
-    dependencies = {
-      'saghen/blink.cmp',
-    },
-  },
-  {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    build = 'cd app && yarn install',
-    init = function()
-      vim.g.mkdp_filetypes = { 'markdown' }
-    end,
-    ft = { 'markdown' },
-  },
+vim.g.mkdp_filetypes = { 'markdown' }
+
+vim.pack.add {
+  'https://github.com/saghen/blink.cmp',
+  'https://github.com/OXY2DEV/markview.nvim',
+  'https://github.com/iamcco/markdown-preview.nvim',
 }
