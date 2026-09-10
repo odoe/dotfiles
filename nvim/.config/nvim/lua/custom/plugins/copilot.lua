@@ -9,16 +9,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end,
 })
 
-vim.pack.add {
-  'https://github.com/github/copilot.vim',
-  'https://github.com/nvim-lua/plenary.nvim',
-  { src = 'https://github.com/CopilotC-Nvim/CopilotChat.nvim', version = 'main' },
-}
-
-require('CopilotChat').setup {
-  debug = true,
-}
-
   -- {
   --   'github/copilot.vim',
   --   cmd = 'Copilot',
@@ -41,3 +31,25 @@ require('CopilotChat').setup {
   --     require('copilot_cmp').setup()
   --   end,
   -- },
+
+vim.pack.add {
+  'https://github.com/copilotlsp-nvim/copilot-lsp',
+  'https://github.com/zbirenbaum/copilot.lua',
+  'https://github.com/nvim-lua/plenary.nvim',
+  { src = 'https://github.com/CopilotC-Nvim/CopilotChat.nvim', version = 'main' },
+}
+
+vim.g.copilot_nes_debounce = 500
+
+require('copilot').setup {
+  nes = {
+    enabled = true,
+    keymap = {
+      accept_and_goto = '<leader>p',
+      accept = false,
+      dismiss = '<Esc>',
+    },
+  },
+}
+
+require('CopilotChat').setup {}
